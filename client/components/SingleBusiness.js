@@ -13,25 +13,28 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import CommentsList from './CommentsList';
 import { Rating } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchBusinessFromServer, unmountBusiness } from '../store/business';
 import { fetchCommentsFromServer } from '../store/comments';
 import CarouselOfImages from './CarouselOfImages';
 import Loading from './Loading';
+import styles from '../src/utils/styles';
 
 const SingleBusiness = (props) => {
+  const dispatch = useDispatch();
   const { id, fetchBusiness, destroy, fetchComments } = props;
-  let { business } = props;
+  const business = useSelector((state) => state.business);
+  const comments = useSelector((state) => state.comments);
   const comments = props.comments;
 
   useEffect(() => {
-    fetchComments(id);
+    dispatch(fetchCommentsFromServer(id));
     // return () => destroy();
   }, [comments.length]);
 
   useEffect(() => {
-    fetchBusiness(id);
-    return () => destroy();
+    dispatch(fetchBusinessFromServer(id));
+    return () => dispatch(unmountBusiness());
   }, []);
 
   const {
@@ -84,7 +87,7 @@ const SingleBusiness = (props) => {
     <Text>Users report this location has closed.</Text>
   ) : (
     <View>
-      <Text style={styles.hourStyle}>Hours</Text>
+      <Text style={styles.singleBusiness.hourStyle}>Hours</Text>
       {daysOfTheWeek.map((day, index) =>
         !hoursOpened[index] ? (
           <Text key={day} style={styles.paragraphStyle}>
@@ -92,7 +95,7 @@ const SingleBusiness = (props) => {
           </Text>
         ) : (
           <Text
-            style={styles.paragraphStyle}
+            style={styles.singleBusiness.paragraphStyle}
             key={day}
           >{`${day} ${hoursOpened[index].start} - ${hoursOpened[index].end}`}</Text>
         )
@@ -109,7 +112,7 @@ const SingleBusiness = (props) => {
 
   const ownerInfo = owner ? (
     <TouchableOpacity
-      style={styles.ownerName}
+      style={styles.singleBusiness.ownerName}
       onPress={() => Actions.ownerProfile({ id: owner.id })}
     >
       <Subheading>
@@ -121,14 +124,17 @@ const SingleBusiness = (props) => {
   const imageOutput =
     images && !images.length ? (
       <Card.Cover
-        style={styles.imageStyle}
+        style={styles.singleBusiness.imageStyle}
         source={{
           uri:
             'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png'
         }}
       />
     ) : images && images.length === 1 ? (
-      <Card.Cover style={styles.imageStyle} source={{ uri: images[0] }} />
+      <Card.Cover
+        style={styles.singleBusiness.imageStyle}
+        source={{ uri: images[0] }}
+      />
     ) : (
       <CarouselOfImages images={business.images || []} />
     );
@@ -137,8 +143,8 @@ const SingleBusiness = (props) => {
     return (
       <SafeAreaView>
         <ScrollView>
-          <View style={styles.backgroundStyle}>
-            <Title style={styles.titleStyle}>{name}</Title>
+          <View style={styles.singleBusiness.backgroundStyle}>
+            <Title style={styles.singleBusiness.titleStyle}>{name}</Title>
             {ownerInfo}
             <Rating
               type="custom"
@@ -148,13 +154,13 @@ const SingleBusiness = (props) => {
               readonly={true}
             />
             {imageOutput}
-            <View style={styles.container}>
-              <Text style={styles.textStyle}>Location</Text>
+            <View style={styles.singleBusiness.container}>
+              <Text style={styles.singleBusiness.textStyle}>Location</Text>
               <Paragraph
-                style={styles.paragraphStyle}
+                style={styles.singleBusiness.paragraphStyle}
               >{`${address} \n${city}, ${state} ${postalCode} \n ${phone}`}</Paragraph>
               <MapView
-                style={styles.mapStyle}
+                style={styles.singleBusiness.mapStyle}
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation={true}
                 region={{
@@ -191,72 +197,4 @@ const SingleBusiness = (props) => {
   }
 };
 
-const mapState = (state) => {
-  return {
-    business: state.business,
-    comments: state.comments
-  };
-};
-
-const mapDispatch = (dispatch) => ({
-  fetchBusiness: (id) => dispatch(fetchBusinessFromServer(id)),
-  destroy: () => dispatch(unmountBusiness()),
-  fetchComments: (id) => dispatch(fetchCommentsFromServer(id))
-});
-
-export default connect(mapState, mapDispatch)(SingleBusiness);
-
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    marginTop: '10%',
-    marginLeft: '5%',
-    marginRight: '5%',
-    marginBottom: '5%',
-    borderRadius: 5,
-    borderWidth: 1,
-    textAlign: 'center',
-    backgroundColor: 'white'
-  },
-  mapStyle: {
-    alignSelf: 'center',
-    height: 200,
-    width: 300,
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20
-  },
-  ownerName: {
-    alignSelf: 'center'
-  },
-  starsStyle: {
-    alignSelf: 'center'
-  },
-  container: {
-    flex: 1
-  },
-  titleStyle: {
-    fontSize: 23,
-    textAlign: 'center',
-    fontWeight: 'bold'
-  },
-  textStyle: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center'
-  },
-  hourStyle: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: '5%',
-    marginBottom: '2%'
-  },
-  paragraphStyle: {
-    fontSize: 15,
-    textAlign: 'center'
-  },
-  imageStyle: {
-    margin: '5%',
-    fontSize: 18
-  }
-});
+export default SingleBusiness;

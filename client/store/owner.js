@@ -12,7 +12,7 @@ const defaultOwner = {};
 export const fetchOwnerFromServer = (id) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://hackerdelta-capstone.herokuapp.com/api/users/owner/${id}`
+      `https://localhost:8000.com/api/users/owner/${id}`
     );
     dispatch(getOwner(response.data));
   } catch (err) {

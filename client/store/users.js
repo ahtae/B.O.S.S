@@ -33,9 +33,7 @@ const defaultUsers = [];
 
 export const fetchUsersFromServer = () => async (dispatch) => {
   try {
-    const response = await axios.get(
-      'https://hackerdelta-capstone.herokuapp.com/api/users'
-    );
+    const response = await axios.get('https://localhost:8000.com/api/users');
     dispatch(getUsers(response.data));
   } catch (err) {
     console.log(err);
@@ -44,9 +42,7 @@ export const fetchUsersFromServer = () => async (dispatch) => {
 
 export const removeUserFromServer = (id) => async (dispatch) => {
   try {
-    await axios.delete(
-      `https://hackerdelta-capstone.herokuapp.com/api/users/${id}`
-    );
+    await axios.delete(`https://localhost:8000.com/api/users/${id}`);
     dispatch(removeUser(id));
   } catch (err) {
     console.log(err);
@@ -56,7 +52,7 @@ export const removeUserFromServer = (id) => async (dispatch) => {
 export const updateUserFromServer = (id, user) => async (dispatch) => {
   try {
     const response = await axios.put(
-      `https://hackerdelta-capstone.herokuapp.com/api/users/${id}`,
+      `https://localhost:8000.com/api/users/${id}`,
       user
     );
     dispatch(updateUser(response.data));
@@ -68,7 +64,7 @@ export const updateUserFromServer = (id, user) => async (dispatch) => {
 export const createUserFromServer = (id, user) => async (dispatch) => {
   try {
     const response = await axios.post(
-      'https://hackerdelta-capstone.herokuapp.com/api/users/',
+      'https://localhost:8000.com/api/users/',
       user
     );
     dispatch(createUser(response.data));

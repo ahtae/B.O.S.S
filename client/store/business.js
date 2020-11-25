@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const GET_BUSINESS = 'GET_BUSINESS';
-
 const UNMOUNT_BUSINESS = 'UNMOUNT_BUSINESS';
 
 const getBusiness = (business) => ({
@@ -18,7 +17,7 @@ const defaultBusiness = {};
 export const fetchBusinessFromServer = (id) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses/${id}`
+      `https://localhost:8000.com/api/businesses/${id}`
     );
     dispatch(getBusiness(response.data));
   } catch (err) {

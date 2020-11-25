@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Image
-} from 'react-native';
-import { IconButton, Button } from 'react-native-paper';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { IconButton } from 'react-native-paper';
 import { Rating } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createCommentFromServer } from '../store/comments';
+import styles from '../src/utils/styles';
 
-const CommentForm = ({ business, user, createComment }) => {
+const CommentForm = () => {
+  const business = useSelector((state) => state.business);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const prompt = () => Actions.prompt();
   const userId = user ? user.id : null;
   const businessId = business.id;
@@ -31,14 +28,16 @@ const CommentForm = ({ business, user, createComment }) => {
     if (!userId) {
       Actions.prompt();
     } else {
-      createComment(businessId, {
-        businessId,
-        userId,
-        title,
-        comment,
-        stars,
-        photo
-      });
+      dispatch(
+        createCommentFromServer(businessId, {
+          businessId,
+          userId,
+          title,
+          comment,
+          stars,
+          photo
+        })
+      );
       Actions.business({ id: businessId });
     }
   };
@@ -139,76 +138,15 @@ const CommentForm = ({ business, user, createComment }) => {
             />
           </View>
         ) : null}
-        <TouchableOpacity style={styles.button} onPress={handleSubmitClick}>
-          <Text style={styles.textStyle}>Submit</Text>
+        <TouchableOpacity
+          style={styles.commentForm.button}
+          onPress={handleSubmitClick}
+        >
+          <Text style={styles.commentForm.textStyle}>Submit</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const mapState = (state) => {
-  return {
-    business: state.business,
-    user: state.user
-  };
-};
-
-const mapDispatch = (dispatch) => ({
-  createComment: (businessId, userId, title, comment, stars) =>
-    dispatch(createCommentFromServer(businessId, userId, title, comment, stars))
-});
-
-export default connect(mapState, mapDispatch)(CommentForm);
-
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    marginTop: '10%',
-    marginLeft: '5%',
-    marginRight: '5%',
-    marginBottom: '5%',
-    borderRadius: 5,
-    borderWidth: 1,
-    textAlign: 'center',
-    backgroundColor: 'white'
-  },
-  container: {
-    marginTop: '15%',
-    marginLeft: '5%',
-    marginRight: '5%',
-    padding: '1%'
-  },
-  input: {
-    margin: '5%',
-    borderRadius: 5,
-    borderWidth: 1
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginBottom: '3%'
-  },
-  imageStyle: {
-    width: '100%',
-    height: '100%',
-    margin: 0,
-    padding: 0
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 10,
-    marginTop: 6
-  },
-  textStyle: {
-    color: '#d6f3ff',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    paddingVertical: 7
-  },
-  button: {
-    backgroundColor: '#144d62',
-    borderRadius: 25,
-    marginVertical: 10
-  }
-});
+export default CommentForm;

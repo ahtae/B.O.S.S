@@ -3,7 +3,6 @@ import {
   ScrollView,
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   SafeAreaView
 } from 'react-native';
@@ -13,18 +12,21 @@ import * as Permissions from 'expo-permissions';
 import BusinessCard from './BusinessCard';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
 import { fetchBusinessesFromServer } from '../store/businesses';
 import Loading from './Loading';
+import styles from '../src/utils/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
-const BusinessesList = ({ businesses, fetchBusinesses }) => {
+const BusinessesList = () => {
+  const businesses = useSelector((state) => state.businesses);
+  const dispatch = useDispatch();
   const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
   const getAllBusinessesHook = () => {
     try {
-      fetchBusinesses();
+      dispatch(fetchBusinessesFromServer());
     } catch (err) {
       setErrorMessage('Something went wrong!');
     }
@@ -69,7 +71,7 @@ const BusinessesList = ({ businesses, fetchBusinesses }) => {
   const output = location ? (
     <View>
       <MapView
-        style={styles.mapStyle}
+        style={styles.businesses.mapStyle}
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
         region={{
@@ -103,8 +105,8 @@ const BusinessesList = ({ businesses, fetchBusinesses }) => {
     <SafeAreaView>
       {businesses ? (
         <ScrollView>
-          <Title style={styles.titleStyle}>Businesses</Title>
-          <Text style={styles.errorStyle}>{errorMessage}</Text>
+          <Title style={styles.businesses.titleStyle}>Businesses</Title>
+          <Text style={styles.businesses.errorStyle}>{errorMessage}</Text>
           {output}
         </ScrollView>
       ) : (
@@ -114,35 +116,4 @@ const BusinessesList = ({ businesses, fetchBusinesses }) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    businesses: state.businesses,
-    user: state.user
-  };
-};
-
-const mapDispatch = (dispatch) => ({
-  fetchBusinesses: () => dispatch(fetchBusinessesFromServer())
-});
-
-export default connect(mapState, mapDispatch)(BusinessesList);
-
-const styles = StyleSheet.create({
-  mapStyle: {
-    alignSelf: 'stretch',
-    height: 500,
-    margin: '5%'
-  },
-  titleStyle: {
-    marginTop: '12%',
-    paddingTop: '5%',
-    fontSize: 40,
-    textAlign: 'center'
-  },
-  errorStyle: {
-    color: 'red',
-    textAlign: 'center',
-    marginTop: '1%',
-    fontWeight: 'bold'
-  }
-});
+export default BusinessesList;

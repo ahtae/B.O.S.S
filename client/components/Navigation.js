@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import BusinessesList from './BusinessesList';
 import SingleBusiness from './SingleBusiness';
-// import CommentForm from './CommentForm'
+import CommentForm from './CommentForm';
 
 // TAB NAVIGATION
 const Tab = createBottomTabNavigator();
@@ -14,7 +14,7 @@ export function TabNav() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Businesses" component={BusinessesList} />
       <Tab.Screen name="SingleBusiness" component={SingleBusiness} />
-      {/* <Tab.Screen name="CommentForm" component={CommentForm} /> */}
+      <Tab.Screen name="CommentForm" component={CommentForm} />
     </Tab.Navigator>
   );
 }
@@ -31,7 +31,7 @@ export function StackNav() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Businesses" component={BusinessesList} />
       <Stack.Screen name="SingleBusiness" component={SingleBusiness} />
-      {/* <Stack.Screen name="CommentForm" component={CommentForm} /> */}
+      <Stack.Screen name="CommentForm" component={CommentForm} />
     </Stack.Navigator>
   );
 }

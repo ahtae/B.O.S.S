@@ -31,7 +31,7 @@ const defaultComments = [];
 export const fetchCommentsFromServer = (id) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses/${id}/comments`
+      `https://localhost:8000.com/api/businesses/${id}/comments`
     );
     dispatch(getComments(response.data));
   } catch (err) {
@@ -44,7 +44,7 @@ export const createCommentFromServer = (businessId, comment) => async (
 ) => {
   try {
     const response = await axios.post(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses/${businessId}/comments`,
+      `https://localhost:8000.com/api/businesses/${businessId}/comments`,
       comment
     );
     dispatch(createComment(response.data));
@@ -55,9 +55,7 @@ export const createCommentFromServer = (businessId, comment) => async (
 
 export const removeCommentFromServer = (id) => async (dispatch) => {
   try {
-    await axios.delete(
-      `https://hackerdelta-capstone.herokuapp.com/api/comments/${id}`
-    );
+    await axios.delete(`https://localhost:8000.com/api/comments/${id}`);
     dispatch(removeComment(id));
   } catch (err) {
     console.log(err);
@@ -67,7 +65,7 @@ export const removeCommentFromServer = (id) => async (dispatch) => {
 export const updateCommentFromServer = (id, comment) => async (dispatch) => {
   try {
     const response = await axios.put(
-      `https://hackerdelta-capstone.herokuapp.com/api/comments/${id}`,
+      `https://localhost:8000.com/api/comments/${id}`,
       comment
     );
     dispatch(updateComment(response.data));

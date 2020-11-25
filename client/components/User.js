@@ -1,17 +1,20 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Card, Title, Paragraph, IconButton } from 'react-native-paper';
 import { removeUserFromServer } from '../store/users';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import styles from '../src/utils/styles';
 
-const User = ({ currentUser, user, removeUser }) => {
+const User = ({ currentUser }) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const { firstName, lastName, email, image } = currentUser;
   const handleRemoveClick = (id) => {
-    removeUser(id);
+    dispatch(removeUserFromServer(id));
   };
 
   return (
-    <View style={styles.backgroundStyle}>
+    <View style={styles.user.backgroundStyle}>
       {user && user.isAdmin ? (
         <IconButton
           size={20}
@@ -20,41 +23,11 @@ const User = ({ currentUser, user, removeUser }) => {
           accessibilityLabel="close"
         />
       ) : null}
-      <Title style={styles.textStyle}>{`${firstName} ${lastName}`}</Title>
-      <Paragraph style={styles.paragraphStyle}>{`${email} \n`}</Paragraph>
+      <Title style={styles.user.textStyle}>{`${firstName} ${lastName}`}</Title>
+      <Paragraph style={styles.user.paragraphStyle}>{`${email} \n`}</Paragraph>
       <Card.Cover style={styles.imageStyle} source={{ uri: `${image}` }} />
     </View>
   );
 };
 
-const mapState = (state) => {
-  return {
-    user: state.user
-  };
-};
-
-const mapDispatch = (dispatch) => ({
-  removeUser: (id) => dispatch(removeUserFromServer(id))
-});
-
-export default connect(mapState, mapDispatch)(User);
-
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    margin: '5%',
-    borderRadius: 5,
-    borderWidth: 1,
-    textAlign: 'center'
-  },
-  textStyle: {
-    textAlign: 'center'
-  },
-  paragraphStyle: {
-    textAlign: 'center',
-    fontSize: 16
-  },
-  imageStyle: {
-    margin: '5%',
-    fontSize: 18
-  }
-});
+export default User;

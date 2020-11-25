@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
+import styles from '../src/utils/styles';
 
 const Loading = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.loading.container}>
       <Spinner
         visible={true}
         size="large"
-        textContent={'Loading...'}
+        textContent="Loading..."
         color="gray"
         textStyle={styles.spinnerTextStyle}
       />
@@ -17,18 +18,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    paddingTop: 30,
-    backgroundColor: 'white',
-    padding: 8
-  },
-  spinnerTextStyle: {
-    color: 'black',
-    fontSize: 23
-  }
-});

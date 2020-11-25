@@ -1,23 +1,25 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Title, Paragraph } from 'react-native-paper';
 import Comment from './Comment';
 import Comments from './Comments';
 import { Rating } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import uuid from 'react-native-uuid';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import styles from '../src/utils/styles';
 
-const CommentsList = ({ user, arrayOfComments, business }) => {
+const CommentsList = ({ arrayOfComments, business }) => {
+  const user = useSelector((state) => state.user);
+
   const output = arrayOfComments.length ? (
     <View>
       {arrayOfComments.map((comments) => {
         return comments.length === 1 ? (
-          <View key={uuid.v4()} style={styles.containerStyle}>
+          <View key={comments[0].id} style={styles.containerStyle}>
             <Comment information={comments[0]} type="regular" />
           </View>
         ) : (
-          <Comments key={uuid.v4()} comments={comments} />
+          <Comments key={comments[0].id} comments={comments} />
         );
       })}
     </View>
@@ -37,9 +39,9 @@ const CommentsList = ({ user, arrayOfComments, business }) => {
               ratingTextColor="lightgray"
               startingValue={0}
               readonly={true}
-              style={styles.starStyle}
+              style={styles.commentsList.starStyle}
             />
-            <Paragraph style={styles.paragraphStyle}>
+            <Paragraph style={styles.commentsList.paragraphStyle}>
               Tap to review...
             </Paragraph>
           </TouchableOpacity>
@@ -50,43 +52,4 @@ const CommentsList = ({ user, arrayOfComments, business }) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    user: state.user
-  };
-};
-
-export default connect(mapState, null)(CommentsList);
-
-const styles = StyleSheet.create({
-  containerStyle: {
-    margin: '5%',
-    marginBottom: '3%',
-    textAlign: 'left',
-    borderColor: 'lightgray',
-    borderWidth: 1,
-    padding: '1%'
-  },
-  paragraphStyle: {
-    color: 'lightgray'
-  },
-  starStyle: {
-    alignSelf: 'flex-start',
-    marginTop: '2%'
-  },
-  backgroundStyle: {
-    marginTop: '10%',
-    marginBottom: '10%',
-    textAlign: 'center'
-  },
-  textStyle: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center'
-  },
-  imageStyle: {
-    flex: 1,
-    margin: '10%',
-    fontSize: 18
-  }
-});
+export default CommentsList;

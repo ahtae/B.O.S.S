@@ -34,7 +34,7 @@ const defaultBusinesses = [];
 export const fetchBusinessesFromServer = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses`
+      `https://localhost:8000.com//api/businesses`
     );
     dispatch(getBusinesses(response.data));
   } catch (err) {
@@ -44,9 +44,7 @@ export const fetchBusinessesFromServer = () => async (dispatch) => {
 
 export const removeBusinessFromServer = (id) => async (dispatch) => {
   try {
-    await axios.delete(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses/${id}`
-    );
+    await axios.delete(`https://localhost:8000.com/api/businesses/${id}`);
     dispatch(removeBusiness(id));
   } catch (err) {
     console.log(err);
@@ -56,7 +54,7 @@ export const removeBusinessFromServer = (id) => async (dispatch) => {
 export const updateBusinessFromServer = (id, business) => async (dispatch) => {
   try {
     const response = await axios.put(
-      `https://hackerdelta-capstone.herokuapp.com/api/businesses/${id}`,
+      `https://localhost:8000.com/api/businesses/${id}`,
       business
     );
     dispatch(updateBusiness(response.data));
@@ -68,7 +66,7 @@ export const updateBusinessFromServer = (id, business) => async (dispatch) => {
 export const createBusinessFromServer = (id, business) => async (dispatch) => {
   try {
     const response = await axios.post(
-      'https://hackerdelta-capstone.herokuapp.comapi/businesses/',
+      'https://localhost:8000.com/api/businesses/',
       business
     );
     dispatch(createBusiness(response.data));

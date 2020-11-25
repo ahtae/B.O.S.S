@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity
-} from 'react-native';
-import { connect } from 'react-redux';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { authsignup } from '../store/user';
+import styles from '../src/utils/styles';
 
 const FormSignUp = (props) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const onSubmit = () => {
-    props.signup(firstName, lastName, email, password);
+    dispatch(authsignup(firstName, lastName, email, password));
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.formSignUp.container}>
       <TextInput
-        style={styles.inputBox}
+        style={styles.formSignUp.inputBox}
         placeholder="First Name"
         placeholderTextColor="#003344"
         autoCapitalize="none"
@@ -31,7 +29,7 @@ const FormSignUp = (props) => {
         }}
       />
       <TextInput
-        style={styles.inputBox}
+        style={styles.formSignUp.inputBox}
         placeholder="Last Name"
         placeholderTextColor="#003344"
         autoCapitalize="none"
@@ -41,7 +39,7 @@ const FormSignUp = (props) => {
         }}
       />
       <TextInput
-        style={styles.inputBox}
+        style={styles.formSignUp.inputBox}
         placeholder="Email"
         placeholderTextColor="#003344"
         autoCapitalize="none"
@@ -51,7 +49,7 @@ const FormSignUp = (props) => {
         }}
       />
       <TextInput
-        style={styles.inputBox}
+        style={styles.formSignUp.formSignUp.inputBox}
         placeholder="Password"
         placeholderTextColor="#003344"
         secureTextEntry={true}
@@ -60,51 +58,11 @@ const FormSignUp = (props) => {
           setPassword(text);
         }}
       />
-      <TouchableOpacity style={styles.button} onPress={onSubmit}>
-        <Text style={styles.textStyle}>Sign Up</Text>
+      <TouchableOpacity style={styles.formSignUp.button} onPress={onSubmit}>
+        <Text style={styles.formSignUp.textStyle}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
 };
-const mapSignup = (state) => {
-  return {
-    user: state.user
-  };
-};
 
-const mapDispatch = (dispatch) => {
-  return {
-    signup: (firstName, lastName, email, password) =>
-      dispatch(authsignup(firstName, lastName, email, password))
-  };
-};
-
-export default connect(mapSignup, mapDispatch)(FormSignUp);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1.5,
-    alignItems: 'center'
-  },
-  inputBox: {
-    backgroundColor: '#e8ebf3',
-    width: 300,
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    marginVertical: 10
-  },
-  button: {
-    width: 300,
-    backgroundColor: '#144d62',
-    borderRadius: 25,
-    marginVertical: 10
-  },
-  textStyle: {
-    color: '#d6f3ff',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    paddingVertical: 7
-  }
-});
+export default FormSignUp;

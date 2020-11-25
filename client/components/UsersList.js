@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView } from 'react-native';
 import { Title } from 'react-native-paper';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersFromServer } from '../store/users';
 import Loading from './Loading';
 import User from './User';
+import styles from '../src/utils/styles';
 
-const UsersList = (props) => {
-  const { users, fetchUsers } = props;
+const UsersList = () => {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const getAllUsersHook = () => {
     try {
-      fetchUsers();
+      dispatch(fetchUsersFromServer());
     } catch (err) {
       setErrorMessage('Something went wrong!');
     }
@@ -34,8 +37,8 @@ const UsersList = (props) => {
     <SafeAreaView>
       {users ? (
         <ScrollView>
-          <Title style={styles.titleStyle}>Users</Title>
-          <Text style={styles.errorStyle}>{errorMessage}</Text>
+          <Title style={styles.usersList.titleStyle}>Users</Title>
+          <Text style={styles.usersList.errorStyle}>{errorMessage}</Text>
           {output}
         </ScrollView>
       ) : (
@@ -45,35 +48,4 @@ const UsersList = (props) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    users: state.users,
-    user: state.user
-  };
-};
-
-const mapDispatch = (dispatch) => ({
-  fetchUsers: () => dispatch(fetchUsersFromServer())
-});
-
-export default connect(mapState, mapDispatch)(UsersList);
-
-const styles = StyleSheet.create({
-  mapStyle: {
-    alignSelf: 'stretch',
-    height: 500,
-    margin: '5%'
-  },
-  titleStyle: {
-    marginTop: '12%',
-    paddingTop: '5%',
-    fontSize: 40,
-    textAlign: 'center'
-  },
-  errorStyle: {
-    color: 'red',
-    textAlign: 'center',
-    marginTop: '1%',
-    fontWeight: 'bold'
-  }
-});
+export default UsersList;
