@@ -3,48 +3,44 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#3d7f99'
-  },
-  inputBox: {
-    backgroundColor: '#e8ebf3',
-    width: 300,
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    marginVertical: 10
-  },
-  button: {
-    width: 300,
-    backgroundColor: 'black',
-    borderRadius: 25,
-    marginVertical: 10,
-    color: 'white'
-  },
-  textStyle: {
-    color: '#ffffff',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    paddingVertical: 7
-  },
-  signupText: {
-    flexGrow: 0.25,
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingVertical: 15,
-    flexDirection: 'row',
-    color: 'white'
-  },
-  signupButton: {
-    color: '#ffffff',
-    fontSize: 20,
-    fontWeight: 'bold'
+    borderWidth: 1
   },
   text: {
-    color: '#ffffff',
-    fontSize: 20
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  navigationContainer: {
+    margin: 15
+  },
+  title: {
+    fontSize: 30,
+    fontFamily: 'Roboto_300Light',
+    marginBottom: 20
+  },
+  paragraph: {
+    marginTop: 10
+  },
+  loginContainer: {
+    width: '80%',
+    alignItems: 'center',
+    padding: 10,
+    elevation: 10,
+    backgroundColor: '#e6e6e6'
+  },
+  textInput: {
+    height: 40,
+    width: '80%',
+    margin: 10,
+    backgroundColor: 'rgb(245, 245, 245)',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    padding: 5
+  },
+  errorText: {
+    fontSize: 10,
+    color: 'red'
   }
 });
 
