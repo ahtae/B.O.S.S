@@ -9,7 +9,7 @@ const Business = ({ business, navigation }) => {
 
   return (
     <TouchableOpacity activeOpacity={1.0} onPress={navigateToBusiness}>
-      <BusinessCard business={business} />
+      <BusinessCard business={business} navigation={navigation} />
     </TouchableOpacity>
   );
 };
