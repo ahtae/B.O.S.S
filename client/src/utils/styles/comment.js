@@ -22,11 +22,20 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginTop: '2%'
   },
-  imageStyle: {
+  userImage: {
     width: '10%',
     height: 27,
     margin: 0,
     padding: 0
+  },
+  icon: {
+    alignSelf: 'baseline',
+    margin: 0,
+    padding: 0
+  },
+  commentImage: {
+    width: 100,
+    height: 100
   }
 });
 
