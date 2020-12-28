@@ -2,44 +2,42 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#3d7f99',
-    height: '100%'
-  },
-  container2: {},
-  signupText: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    flexDirection: 'row'
+    borderWidth: 1
   },
   text: {
-    color: '#b5deef',
-    fontSize: 20
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
-  signupButton: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold'
+  navigationContainer: {
+    margin: 15
   },
-  inputBox: {
-    backgroundColor: '#e8ebf3',
-    width: 300,
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    marginVertical: 10
+  title: {
+    fontSize: 30,
+    fontFamily: 'Roboto_300Light',
+    marginBottom: 20
   },
-  button: {
-    width: 300,
-    backgroundColor: '#144d62',
-    borderRadius: 25,
-    marginVertical: 10
+  loginContainer: {
+    width: '80%',
+    alignItems: 'center',
+    padding: 10,
+    elevation: 10,
+    backgroundColor: '#e6e6e6'
   },
-  textStyle: {
-    color: '#d6f3ff',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    paddingVertical: 7
+  textInput: {
+    height: 40,
+    width: '80%',
+    margin: 10,
+    backgroundColor: 'rgb(245, 245, 245)',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    padding: 5
+  },
+  errorText: {
+    fontSize: 10,
+    color: 'red'
   }
 });
 
