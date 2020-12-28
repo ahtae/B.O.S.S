@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 
     res.status(200).json(businesses);
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 });
 
