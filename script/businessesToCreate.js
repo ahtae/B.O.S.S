@@ -13,6 +13,7 @@ const businessesToCreate = [
     phone: '',
     display_phone: '',
     review_count: 51,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'caribbean',
@@ -96,6 +97,7 @@ const businessesToCreate = [
     phone: '+13478798911',
     display_phone: '(347) 879-8911',
     review_count: 184,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'seafood',
@@ -185,6 +187,7 @@ const businessesToCreate = [
     phone: '+17184842247',
     display_phone: '(718) 484-2247',
     review_count: 300,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'newamerican',
@@ -312,6 +315,7 @@ const businessesToCreate = [
     id: '7lPqxohBRjnpJjvNjRQUoA',
     alias: 'sip-unwine-brooklyn',
     name: 'Sip Unwine',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/0YjkZFNaRYeoX7iECvbcBw/o.jpg',
     is_claimed: true,
@@ -422,6 +426,7 @@ const businessesToCreate = [
     phone: '+17186761047',
     display_phone: '(718) 676-1047',
     review_count: 24,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'haitian',
@@ -523,6 +528,7 @@ const businessesToCreate = [
     id: '9fWKxkCOV0Lc2ofx_wWm9A',
     alias: 'savvy-bistro-and-bar-brooklyn',
     name: 'Savvy Bistro and Bar',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/eveihjrZHjEE-3YC3TES_Q/o.jpg',
     is_claimed: true,
@@ -611,6 +617,7 @@ const businessesToCreate = [
     phone: '+17189287555',
     display_phone: '(718) 928-7555',
     review_count: 115,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'cajun',
@@ -693,6 +700,7 @@ const businessesToCreate = [
     id: 'hO1T1fG5f5FbvOP2124rpw',
     alias: 'negril-bk-brooklyn',
     name: 'Negril BK',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media2.fl.yelpcdn.com/bphoto/f4dYwn8IbPlx4MTp8fKOrA/o.jpg',
     is_claimed: true,
@@ -789,6 +797,7 @@ const businessesToCreate = [
     phone: '+13475295729',
     display_phone: '(347) 529-5729',
     review_count: 80,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'southern',
@@ -869,6 +878,7 @@ const businessesToCreate = [
     id: 'JXsHJfBAKZT0fG8XkA9Kzw',
     alias: 'sweet-science-brooklyn',
     name: 'Sweet Science',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/yhADILytHbX27QT2smZ3Lw/o.jpg',
     is_claimed: true,
@@ -979,6 +989,7 @@ const businessesToCreate = [
     phone: '+13477630872',
     display_phone: '(347) 763-0872',
     review_count: 567,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'bars',
@@ -1076,6 +1087,7 @@ const businessesToCreate = [
     phone: '+13477630872',
     display_phone: '(347) 763-0872',
     review_count: 567,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'bars',
@@ -1170,6 +1182,7 @@ const businessesToCreate = [
       'https://s3-media4.fl.yelpcdn.com/bphoto/mgUEFy0r6Nmwz_4MvXoGSw/o.jpg',
     is_claimed: false,
     is_closed: false,
+    categoryFilter: 'Restaurant',
     url:
       'https://www.yelp.com/biz/soul-out-astoria?adjust_creative=HYR3Eukq_qNCWQw2R8SBDg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=HYR3Eukq_qNCWQw2R8SBDg',
     phone: '+17189374958',
@@ -1267,6 +1280,7 @@ const businessesToCreate = [
     phone: '+19293563073',
     display_phone: '(929) 356-3073',
     review_count: 60,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'soulfood',
@@ -1345,6 +1359,7 @@ const businessesToCreate = [
     id: '9kzXwt4hleNPzW18wzJVig',
     alias: 'only-rare-nyc-queens',
     name: 'Only Rare NYC',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/-lNT3S4a3CgxqNoMZGWVjQ/o.jpg',
     is_claimed: true,
@@ -1521,6 +1536,7 @@ const businessesToCreate = [
     id: '9kQNf7VCFxGt-rVObOuWXQ',
     alias: 'something-catchy-astoria',
     name: 'Something Catchy',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/84w66y85Zxyd9qIod0ZDBg/o.jpg',
     is_claimed: true,
@@ -1617,6 +1633,7 @@ const businessesToCreate = [
     phone: '+19294050181',
     display_phone: '(929) 405-0181',
     review_count: 22,
+    categoryFilter: 'Nail Salon',
     categories: [
       {
         alias: 'othersalons',
@@ -1717,6 +1734,7 @@ const businessesToCreate = [
     phone: '',
     display_phone: '',
     review_count: 61,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'african',
@@ -1804,6 +1822,7 @@ const businessesToCreate = [
     phone: '+17184702587',
     display_phone: '(718) 470-2587',
     review_count: 80,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'vegan',
@@ -1882,6 +1901,7 @@ const businessesToCreate = [
     id: 'BMSercVWfNEnnvU6-A00SQ',
     alias: 'sweet-and-savory-cafe-baldwin',
     name: 'Sweet & Savory Cafe',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/wmQGHFNAacC-_B90ANjm7A/o.jpg',
     is_claimed: true,
@@ -1959,6 +1979,7 @@ const businessesToCreate = [
     id: 'QzZlCAp7Qp7nBP7kRuGuNg',
     alias: 'harlem-hops-new-york-2',
     name: 'Harlem Hops',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/6AmF33DK3pNEc-Wl4K6roA/o.jpg',
     is_claimed: true,
@@ -2059,6 +2080,7 @@ const businessesToCreate = [
     id: 'Z-hDHjP4Eza6BA4G97tzVA',
     alias: 'blvd-bistro-new-york',
     name: 'BLVD Bistro',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/QCZQZlIsd22Lmq3rnuvmCw/o.jpg',
     is_claimed: true,
@@ -2142,6 +2164,7 @@ const businessesToCreate = [
     id: '04NdwZnSFH3FXFBtwCrrAg',
     alias: 'home-sweet-harlem-new-york',
     name: 'Home Sweet Harlem',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media2.fl.yelpcdn.com/bphoto/Dp-i2ZVxE14ileRjmFFHTw/o.jpg',
     is_claimed: true,
@@ -2243,6 +2266,7 @@ const businessesToCreate = [
     id: 'N6DJBIcFiqgtTL2w5dozHA',
     alias: 'today-beauty-supply-new-york',
     name: 'Today Beauty Supply',
+    categoryFilter: 'Hair Salon',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/bYNRSnf0Q9NMpsLHZ-swaQ/o.jpg',
     is_claimed: true,
@@ -2342,6 +2366,7 @@ const businessesToCreate = [
     id: 'Fl2z1edJw3MONc9rERWRMg',
     alias: 'b2-harlem-new-york',
     name: 'B2 Harlem',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/jvUikmO_r3G0HRUznGIKWw/o.jpg',
     is_claimed: true,
@@ -2447,6 +2472,7 @@ const businessesToCreate = [
       'https://s3-media2.fl.yelpcdn.com/bphoto/-Osj3DK7Geyvx23aFhwXfQ/o.jpg',
     is_claimed: true,
     is_closed: false,
+    categoryFilter: 'Restaurant',
     url:
       'https://www.yelp.com/biz/melbas-new-york?adjust_creative=HYR3Eukq_qNCWQw2R8SBDg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=HYR3Eukq_qNCWQw2R8SBDg',
     phone: '+12128647777',
@@ -2645,6 +2671,7 @@ const businessesToCreate = [
     phone: '+12126349004',
     display_phone: '(212) 634-9004',
     review_count: 187,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'icecream',
@@ -2742,6 +2769,7 @@ const businessesToCreate = [
     id: 'BQcgpQxUM39PMO_YDl_CqA',
     alias: 'fredas-caribbean-and-soul-cuisine-new-york',
     name: "Freda's Caribbean & Soul Cuisine",
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/4JLFuFJ2kpnpMHO7ZSqvyQ/o.jpg',
     is_claimed: true,
@@ -2843,6 +2871,7 @@ const businessesToCreate = [
       'https://s3-media3.fl.yelpcdn.com/bphoto/14fNIad-AGLvWaPxGMrWAQ/o.jpg',
     is_claimed: true,
     is_closed: false,
+    categoryFilter: 'Restaurant',
     url:
       'https://www.yelp.com/biz/the-kutty-the-bronx?adjust_creative=HYR3Eukq_qNCWQw2R8SBDg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=HYR3Eukq_qNCWQw2R8SBDg',
     phone: '',
@@ -2885,6 +2914,7 @@ const businessesToCreate = [
     id: 'U6-MLEp08nWyrQwHPZx3Hw',
     alias: 'cupcake-me-bronx-2',
     name: 'Cupcake Me!',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media2.fl.yelpcdn.com/bphoto/I0q5MSf4e1qmuKjYuWpHpw/o.jpg',
     is_claimed: true,
@@ -2982,6 +3012,7 @@ const businessesToCreate = [
         title: 'Caribbean'
       }
     ],
+    categoryFilter: 'Restaurant',
     rating: 3.5,
     location: {
       address1: '3114 Third Ave',
@@ -3059,6 +3090,7 @@ const businessesToCreate = [
     id: 'XOnspIaW6mYVmrvgqOaYSQ',
     alias: 'lolos-seafood-shack-new-york',
     name: "Lolo's Seafood Shack",
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media2.fl.yelpcdn.com/bphoto/rD6VskdfpjsNa72AFrHDIg/o.jpg',
     is_claimed: true,
@@ -3150,6 +3182,7 @@ const businessesToCreate = [
     id: 'T1kO6d-QY9i3f4D_yNsU6Q',
     alias: 'jibarito-shack-bronx-2',
     name: 'Jibarito Shack',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/UVRf4ZuWQ3PtuBRuFqzWIQ/o.jpg',
     is_claimed: true,
@@ -3328,6 +3361,7 @@ const businessesToCreate = [
     id: '9UPKE6UxmXuLT-o4NwhPUw',
     alias: 'jus-jerk-mount-vernon',
     name: 'Jus Jerk',
+    categoryFilter: 'Restaurant',
     image_url:
       'https://s3-media3.fl.yelpcdn.com/bphoto/NFpjIiy5WuvgdmTm1GcH1g/o.jpg',
     is_claimed: true,
@@ -3415,6 +3449,7 @@ const businessesToCreate = [
     id: 'jBs1_nH7Lv_jdnW20N0PMA',
     alias: 'the-nail-box-bronx',
     name: 'The Nail Box',
+    categoryFilter: 'Nail Sailon',
     image_url:
       'https://s3-media1.fl.yelpcdn.com/bphoto/HxcMNkvfIJ1h7dXOJyIT1w/o.jpg',
     is_claimed: true,
@@ -3427,7 +3462,7 @@ const businessesToCreate = [
     categories: [
       {
         alias: 'othersalons',
-        title: 'Nail Salons'
+        title: 'Nail Salon'
       }
     ],
     rating: 3.0,
@@ -3517,6 +3552,7 @@ const businessesToCreate = [
     phone: '+13473988917',
     display_phone: '(347) 398-8917',
     review_count: 28,
+    categoryFilter: 'Restaurant',
     categories: [
       {
         alias: 'soulfood',
