@@ -6,11 +6,10 @@
     "description": "B.O.S.S. is a React Native mobile application built with Expo that is intended to help bridge the racial wealth gap and strengthen local economies. B.O.S.S. stands for Black Owned Support System. It provides consumers the ability to browse for black-owned businesses that they can support.",
     "githubUrl": "https://github.com/hackerDelta/B.O.S.S",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/lastone.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/triskelion.png",
+      "backgroundColor": "#f8f9fa"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
