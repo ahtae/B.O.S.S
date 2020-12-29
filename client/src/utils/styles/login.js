@@ -11,6 +11,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center'
   },
+  submitButton: {
+    alignItems: 'center',
+    padding: '5%',
+    marginVertical: 10,
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    width: 300
+  },
   navigationContainer: {
     margin: 15
   },
@@ -37,7 +46,8 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 10,
-    color: 'red'
+    color: 'red',
+    fontWeight: 'bold'
   }
 });
 

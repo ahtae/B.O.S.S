@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native';
-import Logo from '../components/Logo';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { authlogin } from '../store/user';
 import styles from '../utils/styles/login';
@@ -34,7 +33,6 @@ const Login = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Logo />
         <Text style={styles.title}>Login</Text>
         <Formik
           validateOnMount={true}
@@ -76,21 +74,35 @@ const Login = ({ navigation }) => {
               {errors.password && touched.password && (
                 <Text style={styles.errorText}>{errors.password}</Text>
               )}
-              <Button
+              <TouchableOpacity
+                style={{
+                  ...styles.submitButton,
+                  backgroundColor:
+                    !isValid || values.email === '' ? 'lightgray' : '#5fb7fe'
+                }}
                 onPress={handleSubmit}
-                title="Submit"
                 disabled={!isValid || values.email === ''}
-              />
+              >
+                <Text
+                  style={{
+                    fontFamily: 'Roboto_700Bold',
+                    color: 'black',
+                    fontSize: 15
+                  }}
+                >
+                  Submit
+                </Text>
+              </TouchableOpacity>
             </>
           )}
         </Formik>
+        <Text style={styles.errorText}>{error ? `${error}!` : ''}</Text>
         <View style={styles.navigationContainer}>
           <Text>Don't have an account?</Text>
           <TouchableOpacity onPress={signup}>
             <Text style={styles.text}>Sign up here.</Text>
           </TouchableOpacity>
         </View>
-        <Text>{error ? `${error}` : ''}</Text>
       </View>
     </>
   );
