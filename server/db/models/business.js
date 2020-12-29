@@ -16,6 +16,13 @@ const Business = db.define('business', {
   phone: {
     type: Sequelize.STRING
   },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    validate: {
+      notEmpty: true
+    }
+  },
   website: {
     type: Sequelize.STRING,
     allowNull: true,
