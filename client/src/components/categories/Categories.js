@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BusinessIcon from '../../../../assets/images/Business.png';
 import HairSalonIcon from '../../../../assets/images/HairSalon.png';
 import NailSalonIcon from '../../../../assets/images/NailSalon.png';
@@ -7,18 +7,13 @@ import { View } from 'react-native';
 import styles from '../../utils/styles/categories';
 import Category from '../categories/category/Category';
 
-const Categories = () => {
+const Categories = ({ selected, handleCategoryClick }) => {
   const categories = [
     { label: 'All Businesses', icon: BusinessIcon },
-    { label: 'Restaurants', icon: HairSalonIcon },
-    { label: 'Hair Salons', icon: NailSalonIcon },
-    { label: 'Nail Salons', icon: RestaurantIcon }
+    { label: 'Restaurant', icon: RestaurantIcon },
+    { label: 'Hair Salon', icon: HairSalonIcon },
+    { label: 'Nail Salon', icon: NailSalonIcon }
   ];
-  const [selected, setSelected] = useState('All Businesses');
-
-  const handleCategoryClick = (label) => {
-    setSelected(label);
-  };
 
   return (
     <View style={styles.container}>
