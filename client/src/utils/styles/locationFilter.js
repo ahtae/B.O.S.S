@@ -1,35 +1,35 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    height: "100%",
+    backgroundColor: 'white',
+    height: '100%'
   },
   text: {
     marginTop: 40,
     marginLeft: 15,
-    fontFamily: "Roboto_300Light",
-    textAlign: "center",
+    fontFamily: 'Roboto_300Light',
+    textAlign: 'center',
     fontSize: 30,
-    backgroundColor: "white",
-    marginBottom: 10,
+    backgroundColor: 'white',
+    marginBottom: 10
   },
   button: {
-    alignSelf: "center",
-    padding: "5%",
+    alignSelf: 'center',
+    padding: '5%',
     marginVertical: 15,
-    borderColor: "black",
-    borderStyle: "solid",
+    borderColor: 'black',
+    borderStyle: 'solid',
     borderWidth: 2,
-    width: 350,
+    width: 350
   },
   buttonText: {
-    fontFamily: "Roboto_700Bold",
-    color: "black",
+    fontFamily: 'Roboto_700Bold',
+    color: 'black',
     fontSize: 15,
-    textAlign: "center",
+    textAlign: 'center'
   },
-  errorText: { color: "red", fontWeight: "bold", textAlign: "center" },
+  errorText: { color: 'red', fontWeight: 'bold', textAlign: 'center' }
 });
 
 export default styles;

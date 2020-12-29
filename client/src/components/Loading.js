@@ -1,7 +1,7 @@
-import React from "react";
-import { View } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
-import styles from "../utils/styles/loading";
+import React from 'react';
+import { View } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
+import styles from '../utils/styles/loading';
 
 const Loading = () => {
   return (

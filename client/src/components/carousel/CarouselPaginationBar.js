@@ -1,5 +1,5 @@
-import React from "react";
-import { View, TouchableOpacity } from "react-native";
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
 const CarouselPaginationBar = (props) => {
   return (
@@ -13,7 +13,7 @@ const CarouselPaginationBar = (props) => {
         marginHorizontal={10}
         height={6}
         backgroundColor={
-          props.inactive ? "rgba(0, 0, 0, 0.20)" : "rgba(0, 0, 0, 0.90)"
+          props.inactive ? 'rgba(0, 0, 0, 0.20)' : 'rgba(0, 0, 0, 0.90)'
         }
       />
     </TouchableOpacity>

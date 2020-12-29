@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import { IconButton } from "react-native-paper";
-import UpdateComment from "./updateComment/UpdateComment";
-import PreviousComments from "./previousComments/PreviousComments";
-import styles from "../../../utils/styles/comments";
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { IconButton } from 'react-native-paper';
+import UpdateComment from './updateComment/UpdateComment';
+import PreviousComments from './previousComments/PreviousComments';
+import styles from '../../../utils/styles/comments';
 
 const Comments = ({ comments }) => {
   const [showPreviousComments, setPreviousComments] = useState(false);
@@ -27,7 +27,7 @@ const Comments = ({ comments }) => {
       <IconButton
         style={styles.icon}
         icon={
-          showPreviousComments ? "arrow-collapse-up" : "arrow-collapse-down"
+          showPreviousComments ? 'arrow-collapse-up' : 'arrow-collapse-down'
         }
         color="black"
         size={15}

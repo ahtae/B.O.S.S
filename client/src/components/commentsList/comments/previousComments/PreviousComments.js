@@ -1,6 +1,6 @@
-import * as React from "react";
-import { View } from "react-native";
-import Comment from "../comment/Comment";
+import * as React from 'react';
+import { View } from 'react-native';
+import Comment from '../comment/Comment';
 
 const PreviousComments = ({ comments }) => {
   const output = comments.length

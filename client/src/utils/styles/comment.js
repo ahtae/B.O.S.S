@@ -1,42 +1,42 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   backgroundStyle: {
-    margin: "5%",
-    marginBottom: "3%",
+    margin: '5%',
+    marginBottom: '3%'
   },
   containerStyle: {
-    margin: "5%",
-    marginBottom: "3%",
-    textAlign: "left",
-    borderColor: "lightgray",
+    margin: '5%',
+    marginBottom: '3%',
+    textAlign: 'left',
+    borderColor: 'lightgray',
     borderWidth: 1,
-    padding: "1%",
+    padding: '1%'
   },
   photoStyle: {
     width: 100,
     height: 100,
-    margin: "10%",
+    margin: '10%'
   },
   starStyle: {
-    alignSelf: "flex-start",
-    marginTop: "2%",
+    alignSelf: 'flex-start',
+    marginTop: '2%'
   },
   userImage: {
-    width: "10%",
+    width: '10%',
     height: 27,
     margin: 0,
-    padding: 0,
+    padding: 0
   },
   icon: {
-    alignSelf: "baseline",
+    alignSelf: 'baseline',
     margin: 0,
-    padding: 0,
+    padding: 0
   },
   commentImage: {
     width: 100,
-    height: 100,
-  },
+    height: 100
+  }
 });
 
 export default styles;

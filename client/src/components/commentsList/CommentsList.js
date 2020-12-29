@@ -1,11 +1,11 @@
-import React from "react";
-import { View, TouchableOpacity } from "react-native";
-import { Title, Paragraph } from "react-native-paper";
-import Comment from "./comments/comment/Comment";
-import Comments from "./comments/Comments";
-import { Rating } from "react-native-elements";
-import { useSelector } from "react-redux";
-import styles from "../../utils/styles/commentsList";
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
+import { Title, Paragraph } from 'react-native-paper';
+import Comment from './comments/comment/Comment';
+import Comments from './comments/Comments';
+import { Rating } from 'react-native-elements';
+import { useSelector } from 'react-redux';
+import styles from '../../utils/styles/commentsList';
 
 const CommentsList = ({ arrayOfComments, business, navigation }) => {
   const user = useSelector((state) => state.user);
@@ -31,7 +31,7 @@ const CommentsList = ({ arrayOfComments, business, navigation }) => {
         <View style={styles.containerStyle}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Comment Form", { business: business })
+              navigation.navigate('Comment Form', { business: business })
             }
           >
             <Rating

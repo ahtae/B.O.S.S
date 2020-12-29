@@ -1,6 +1,6 @@
-import React from "react";
-import { View } from "react-native";
-import Comment from "../comment/Comment";
+import React from 'react';
+import { View } from 'react-native';
+import Comment from '../comment/Comment';
 
 const UpdateComment = ({ comment }) => {
   const output = comment ? (

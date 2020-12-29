@@ -1,16 +1,16 @@
-import * as React from "react";
-import { View } from "react-native";
-import { Card, Title, Paragraph, IconButton } from "react-native-paper";
-import { removeBusinessFromServer } from "../../../../store/business";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "../../../../utils/styles/businessCard";
+import * as React from 'react';
+import { View } from 'react-native';
+import { Card, Title, Paragraph, IconButton } from 'react-native-paper';
+import { removeBusinessFromServer } from '../../../../store/business';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from '../../../../utils/styles/businessCard';
 
 const BusinessCard = ({ business }) => {
   const user = useSelector((state) => state.user);
   const { name, address, city, state, postalCode, phone, images } = business;
   const image = images.length
     ? images[0]
-    : "http://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png";
+    : 'http://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png';
   const dispatch = useDispatch();
 
   const handleRemoveClick = (id) => {

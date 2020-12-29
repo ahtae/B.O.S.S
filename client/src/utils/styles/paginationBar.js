@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   dot: {
@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     marginHorizontal: 8,
-    backgroundColor: "lightgray",
-  },
+    backgroundColor: 'lightgray'
+  }
 });
 
 export default styles;

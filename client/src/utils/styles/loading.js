@@ -1,19 +1,19 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    textAlign: "center",
+    justifyContent: 'center',
+    textAlign: 'center',
     paddingTop: 30,
-    backgroundColor: "white",
-    padding: 8,
+    backgroundColor: 'white',
+    padding: 8
   },
   spinnerTextStyle: {
-    color: "black",
+    color: 'black',
     fontSize: 23,
-    fontFamily: "Roboto_300Light",
-  },
+    fontFamily: 'Roboto_300Light'
+  }
 });
 
 export default styles;
