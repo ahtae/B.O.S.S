@@ -1,20 +1,20 @@
-const db = require("../db");
+const db = require('../db');
 const { Sequelize } = db;
 
-const Comment = db.define("comment", {
+const Comment = db.define('comment', {
   comment: {
     type: Sequelize.TEXT,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   title: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   stars: {
     type: Sequelize.INTEGER,
@@ -22,12 +22,12 @@ const Comment = db.define("comment", {
     validate: {
       min: 0,
       max: 5,
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   photo: {
-    type: Sequelize.STRING,
-  },
+    type: Sequelize.STRING
+  }
 });
 
 module.exports = Comment;
