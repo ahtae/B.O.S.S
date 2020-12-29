@@ -168,7 +168,16 @@ async function seed() {
   const businesses = await Promise.all(
     businessesToCreate.map(
       (
-        { name, photos, coordinates, location, phone, hours, is_closed },
+        {
+          name,
+          photos,
+          coordinates,
+          location,
+          phone,
+          hours,
+          is_closed,
+          categoryFilter
+        },
         index
       ) => {
         return Business.create({
@@ -183,7 +192,8 @@ async function seed() {
           city: location.city,
           postalCode: location.zip_code,
           state: location.state,
-          ownerId: index < 5 ? index + 1 : null
+          ownerId: index < 5 ? index + 1 : null,
+          type: categoryFilter
         });
       }
     )
