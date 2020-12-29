@@ -1,10 +1,10 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import BusinessCard from './businessCard/BusinessCard';
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import BusinessCard from "./businessCard/BusinessCard";
 
 const Business = ({ business, navigation }) => {
   const navigateToBusiness = () => {
-    navigation.navigate('Business', { id: business.id });
+    navigation.navigate("Business", { id: business.id });
   };
 
   return (

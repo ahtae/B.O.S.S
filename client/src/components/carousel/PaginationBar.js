@@ -1,7 +1,7 @@
-import React from 'react';
-import { Pagination } from 'react-native-snap-carousel';
-import CarouselPaginationBar from './CarouselPaginationBar';
-import styles from '../../utils/styles/paginationBar';
+import React from "react";
+import { Pagination } from "react-native-snap-carousel";
+import CarouselPaginationBar from "./CarouselPaginationBar";
+import styles from "../../utils/styles/paginationBar";
 
 const PaginationBar = ({ activeSlide, images, carouselRef }) => {
   return (

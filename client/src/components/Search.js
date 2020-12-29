@@ -1,7 +1,7 @@
-import React from 'react';
-import { SearchBar } from 'react-native-elements';
-import { View } from 'react-native';
-import styles from '../utils/styles/search';
+import React from "react";
+import { SearchBar } from "react-native-elements";
+import { View } from "react-native";
+import styles from "../utils/styles/search";
 
 const Search = ({ search, handleSearchUpdate }) => {
   return (

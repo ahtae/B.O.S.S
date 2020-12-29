@@ -1,9 +1,9 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Card, Title, Paragraph, IconButton } from 'react-native-paper';
-import { removeUserFromServer } from '../store/users';
-import { useSelector, useDispatch } from 'react-redux';
-import styles from '../utils/styles/user';
+import React from "react";
+import { View } from "react-native";
+import { Card, Title, Paragraph, IconButton } from "react-native-paper";
+import { removeUserFromServer } from "../store/users";
+import { useSelector, useDispatch } from "react-redux";
+import styles from "../utils/styles/user";
 
 const User = ({ currentUser }) => {
   const dispatch = useDispatch();
