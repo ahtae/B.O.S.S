@@ -30,6 +30,10 @@ const BusinessOwnerProfile = ({ route, navigation }) => {
     getBusinessesOwnedHook();
   }, []);
 
+  const handleNavigateToBusiness = () => {
+    navigation.navigate('Business', { id: business.id });
+  };
+
   const profileText = owner.profile ? (
     <Paragraph style={styles.paragraphStyle}>{owner.profile}</Paragraph>
   ) : (
@@ -45,7 +49,7 @@ const BusinessOwnerProfile = ({ route, navigation }) => {
           <TouchableOpacity
             key={business.id}
             activeOpacity={1.0}
-            onPress={() => navigation.navigate.business({ id: business.id })}
+            onPress={handleNavigateToBusiness}
           >
             <BusinessCard business={business} />
           </TouchableOpacity>
