@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   textStyle: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   paragraphStyle: {
     textAlign: 'center',

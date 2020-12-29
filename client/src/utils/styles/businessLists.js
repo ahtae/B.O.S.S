@@ -10,13 +10,15 @@ const styles = StyleSheet.create({
     marginTop: '12%',
     paddingTop: '5%',
     fontSize: 40,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   errorStyle: {
     color: 'red',
     textAlign: 'center',
     marginTop: '1%',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_300Light'
   }
 });
 

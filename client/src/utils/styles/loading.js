@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
   },
   spinnerTextStyle: {
     color: 'black',
-    fontSize: 23
+    fontSize: 23,
+    fontFamily: 'Roboto_300Light'
   }
 });
 
