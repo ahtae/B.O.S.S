@@ -1,60 +1,60 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
   },
   submitButton: {
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 10,
-    borderColor: 'black',
-    borderStyle: 'solid',
+    borderColor: "black",
+    borderStyle: "solid",
     borderWidth: 2,
-    width: 300
+    width: 300,
   },
   submitButtonText: {
-    fontFamily: 'Roboto_700Bold',
-    color: 'black',
-    fontSize: 15
+    fontFamily: "Roboto_700Bold",
+    color: "black",
+    fontSize: 15,
   },
   text: {
-    fontWeight: 'bold',
-    textAlign: 'center'
+    fontWeight: "bold",
+    textAlign: "center",
   },
   navigationContainer: {
-    margin: 15
+    margin: 15,
   },
   title: {
     fontSize: 30,
-    fontFamily: 'Roboto_300Light',
-    marginBottom: 20
+    fontFamily: "Roboto_300Light",
+    marginBottom: 20,
   },
   paragraph: {
-    marginTop: 0
+    marginTop: 0,
   },
   loginContainer: {
-    width: '80%',
-    alignItems: 'center',
+    width: "80%",
+    alignItems: "center",
     padding: 10,
     elevation: 10,
-    backgroundColor: '#e6e6e6'
+    backgroundColor: "#e6e6e6",
   },
   textInput: {
     height: 40,
-    width: '80%',
+    width: "80%",
     margin: 30,
-    backgroundColor: 'rgb(245, 245, 245)',
-    borderStyle: 'solid',
+    backgroundColor: "rgb(245, 245, 245)",
+    borderStyle: "solid",
     borderWidth: 2,
-    padding: 5
+    padding: 5,
   },
   errorText: {
     fontSize: 10,
-    color: 'red'
-  }
+    color: "red",
+  },
 });
 
 export default styles;

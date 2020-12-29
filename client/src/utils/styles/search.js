@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
   searchBarContainer: {
-    backgroundColor: 'white'
-  }
+    backgroundColor: "white",
+  },
 });
 
 export default styles;

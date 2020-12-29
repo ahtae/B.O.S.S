@@ -1,23 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   textInput: {
     height: 40,
-    width: '80%',
+    width: "80%",
     margin: 10,
-    backgroundColor: 'rgb(245, 245, 245)',
-    borderColor: 'black',
-    borderStyle: 'solid',
+    backgroundColor: "rgb(245, 245, 245)",
+    borderColor: "black",
+    borderStyle: "solid",
     borderWidth: 2,
-    padding: 5
+    padding: 5,
   },
   errorText: {
     fontSize: 10,
-    color: 'red'
+    color: "red",
   },
   errorInput: {
-    borderColor: 'red'
-  }
+    borderColor: "red",
+  },
 });
 
 export default styles;
