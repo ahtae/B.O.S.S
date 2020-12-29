@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SearchBar } from 'react-native-elements';
 import { View } from 'react-native';
+import styles from '../utils/styles/search';
 
-const Search = () => {
-  const [search, setSearch] = useState('');
-
-  const handleSearchUpdate = (event) => {
-    setSearch(event);
-  };
-
+const Search = ({ search, handleSearchUpdate }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <SearchBar
-        placeholder="Enter location"
+        placeholder="Enter a city"
         onChangeText={handleSearchUpdate}
         value={search}
         platform="ios"
+        color="white"
+        containerStyle={styles.searchBarContainer}
       />
     </View>
   );
