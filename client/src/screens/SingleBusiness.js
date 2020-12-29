@@ -97,6 +97,7 @@ const SingleBusiness = ({ route, navigation }) => {
       )}
     </View>
   );
+
   const calculatedTotalRating =
     arrayOfComments && arrayOfComments.length
       ? arrayOfComments.reduce(
@@ -133,9 +134,39 @@ const SingleBusiness = ({ route, navigation }) => {
       <CarouselOfImages images={business.images || []} />
     );
 
-  console.log(business);
+  const location = Object.keys(business).length ? (
+    <View style={styles.container}>
+      <Text style={styles.textStyle}>Location</Text>
+      <Paragraph
+        style={styles.paragraphStyle}
+      >{`${address} \n${city}, ${state} ${postalCode} \n ${phone}`}</Paragraph>
+      <MapView
+        style={styles.mapStyle}
+        provider={PROVIDER_GOOGLE}
+        showsUserLocation={true}
+        region={{
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1
+        }}
+        zoomEnabled={true}
+        scrollEnabled={true}
+        showCompass={true}
+        rotateEnabled={false}
+      >
+        <Marker
+          coordinate={{
+            latitude: Number(latitude),
+            longitude: Number(longitude)
+          }}
+          title={name}
+        />
+      </MapView>
+    </View>
+  ) : null;
 
-  if (Object.keys(business).length) {
+  if (business) {
     return (
       <SafeAreaView>
         <ScrollView>
@@ -150,35 +181,7 @@ const SingleBusiness = ({ route, navigation }) => {
               readonly={true}
             />
             {imageOutput}
-            <View style={styles.container}>
-              <Text style={styles.textStyle}>Location</Text>
-              <Paragraph
-                style={styles.paragraphStyle}
-              >{`${address} \n${city}, ${state} ${postalCode} \n ${phone}`}</Paragraph>
-              <MapView
-                style={styles.mapStyle}
-                provider={PROVIDER_GOOGLE}
-                showsUserLocation={true}
-                region={{
-                  latitude: Number(latitude),
-                  longitude: Number(longitude),
-                  latitudeDelta: 0.1,
-                  longitudeDelta: 0.1
-                }}
-                zoomEnabled={true}
-                scrollEnabled={true}
-                showCompass={true}
-                rotateEnabled={false}
-              >
-                <Marker
-                  coordinate={{
-                    latitude: Number(latitude),
-                    longitude: Number(longitude)
-                  }}
-                  title={name}
-                />
-              </MapView>
-            </View>
+            {location}
             {hoursOutput}
             <CommentsList
               navigation={navigation}
