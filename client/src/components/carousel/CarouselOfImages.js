@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { View } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
-import { Card } from 'react-native-paper';
-import PaginationBar from './PaginationBar';
-import styles from '../../utils/styles/carouselOfImages';
+import React, { useState, useRef } from "react";
+import { View } from "react-native";
+import Carousel from "react-native-snap-carousel";
+import { Card } from "react-native-paper";
+import PaginationBar from "./PaginationBar";
+import styles from "../../utils/styles/carouselOfImages";
 
 const CarouselOfImages = ({ images }) => {
   const carouselRef = useRef(null);
@@ -19,7 +19,7 @@ const CarouselOfImages = ({ images }) => {
           <Card.Cover
             style={styles.imageStyle}
             source={{
-              uri: `${item}`
+              uri: `${item}`,
             }}
           />
         )}

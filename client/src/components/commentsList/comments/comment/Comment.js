@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Paragraph, IconButton } from 'react-native-paper';
-import { View, Text, Image } from 'react-native';
-import { Rating } from 'react-native-elements';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { removeCommentFromServer } from '../../../../store/comments';
-import { useDispatch } from 'react-redux';
-import styles from '../../../../utils/styles/comment';
+import * as React from "react";
+import { Paragraph, IconButton } from "react-native-paper";
+import { View, Text, Image } from "react-native";
+import { Rating } from "react-native-elements";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { removeCommentFromServer } from "../../../../store/comments";
+import { useDispatch } from "react-redux";
+import styles from "../../../../utils/styles/comment";
 
 const Comment = (props) => {
   const dispatch = useDispatch();
@@ -18,18 +18,18 @@ const Comment = (props) => {
     photo,
     createdAt,
     updatedAt,
-    user
+    user,
   } = information;
   const { firstName, lastName, image } = user;
 
   const typeOutput =
-    type === 'update' ? (
+    type === "update" ? (
       <MaterialCommunityIcons name="update" size={15} color="black" />
     ) : null;
   const date =
-    updatedAt !== createdAt || type === 'update'
+    updatedAt !== createdAt || type === "update"
       ? `Updated Review ${new Date(createdAt).toDateString()}`
-      : updatedAt === createdAt && type === 'previous'
+      : updatedAt === createdAt && type === "previous"
       ? `Previous Review ${new Date(updatedAt).toDateString()}`
       : `${new Date(updatedAt).toDateString()}`;
 

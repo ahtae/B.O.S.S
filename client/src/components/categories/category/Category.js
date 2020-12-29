@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, Image, TouchableOpacity } from 'react-native';
-import styles from '../../../utils/styles/category';
+import React from "react";
+import { Text, Image, TouchableOpacity } from "react-native";
+import styles from "../../../utils/styles/category";
 
 const Category = ({ category, selected, handleCategoryClick }) => {
   return (
@@ -8,8 +8,8 @@ const Category = ({ category, selected, handleCategoryClick }) => {
       key={category.label}
       style={{
         ...styles.container,
-        backgroundColor: selected === category.label ? 'lightgray' : 'white',
-        borderRadius: '13%'
+        backgroundColor: selected === category.label ? "lightgray" : "white",
+        borderRadius: "13%",
       }}
       onPress={() => handleCategoryClick(category.label)}
     >
