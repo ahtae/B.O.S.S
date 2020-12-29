@@ -1,6 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  submitButton: {
+    alignItems: 'center',
+    marginVertical: 10,
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    width: 300
+  },
+  submitButtonText: {
+    fontFamily: 'Roboto_700Bold',
+    color: 'black',
+    fontSize: 15
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
