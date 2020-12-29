@@ -2,9 +2,11 @@ const express = require('express');
 const passport = require('passport');
 const compression = require('compression');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require('../db');
+const cors = require('cors');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db });
@@ -25,6 +27,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+app.use(fileUpload());
 app.use(compression());
 
 app.use(
