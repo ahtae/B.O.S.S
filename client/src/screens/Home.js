@@ -1,29 +1,29 @@
-import React from "react";
+import React from 'react';
 import {
   Text,
   ImageBackground,
   SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
-import { AppLoading } from "expo";
-import { Title } from "react-native-paper";
+  TouchableOpacity
+} from 'react-native';
+import { AppLoading } from 'expo';
+import { Title } from 'react-native-paper';
 import {
   useFonts,
   Roboto_300Light,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto";
-import styles from "../utils/styles/home";
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto';
+import styles from '../utils/styles/home';
 
-const homeImage = require("../../../assets/images/HomePage.png");
+const homeImage = require('../../../assets/images/HomePage.png');
 
 const Home = ({ navigation }) => {
-  const navigateToLogIn = () => navigation.navigate("Login");
-  const navigateToSignUp = () => navigation.navigate("User Signup");
-  const navigateToOptions = () => navigation.navigate("Options");
+  const navigateToLogIn = () => navigation.navigate('Login');
+  const navigateToSignUp = () => navigation.navigate('User Signup');
+  const navigateToOptions = () => navigation.navigate('Options');
 
   const [fontsLoaded] = useFonts({
     Roboto_300Light,
-    Roboto_700Bold,
+    Roboto_700Bold
   });
 
   if (!fontsLoaded) {
