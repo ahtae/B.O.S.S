@@ -19,7 +19,7 @@ const homeImage = require('../../../assets/images/HomePage.png');
 const Home = ({ navigation }) => {
   const navigateToLogIn = () => navigation.navigate('Login');
   const navigateToSignUp = () => navigation.navigate('User Signup');
-  const navigateToDashboard = () => navigation.navigate('Dashboard');
+  const navigateToOptions = () => navigation.navigate('Options');
 
   const [fontsLoaded] = useFonts({
     Roboto_300Light,
@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity style={styles.button} onPress={navigateToLogIn}>
           <Text style={styles.textSign}>Log In</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={navigateToDashboard}>
+        <TouchableOpacity style={styles.button} onPress={navigateToOptions}>
           <Text style={styles.textSign}>Guest</Text>
         </TouchableOpacity>
       </SafeAreaView>
