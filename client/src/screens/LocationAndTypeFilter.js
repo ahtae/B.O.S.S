@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import * as Location from "expo-location";
-import { Categories, Search } from "../components/index";
-import styles from "../utils/styles/locationAndTypeFilter";
-import * as Permissions from "expo-permissions";
-import config from "../../../config";
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import * as Location from 'expo-location';
+import { Categories, Search } from '../components/index';
+import styles from '../utils/styles/locationAndTypeFilter';
+import * as Permissions from 'expo-permissions';
+import config from '../../../config';
 
 const LocationAndTypeFilter = ({ navigation }) => {
-  const [selected, setSelected] = useState("All Businesses");
-  const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
+  const [selected, setSelected] = useState('All Businesses');
+  const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const [location, setLocation] = useState(null);
 
   const getCurrentLocationHook = async () => {
@@ -20,12 +20,12 @@ const LocationAndTypeFilter = ({ navigation }) => {
 
       setLocation({
         latitude: `${currentLocation.coords.latitude}`,
-        longitude: `${currentLocation.coords.longitude}`,
+        longitude: `${currentLocation.coords.longitude}`
       });
     } catch (err) {
-      setError("Permission to access location was denied!");
+      setError('Permission to access location was denied!');
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
     }
   };
@@ -49,9 +49,9 @@ const LocationAndTypeFilter = ({ navigation }) => {
         );
       }
     } catch (err) {
-      setError("Something went wrong!");
+      setError('Something went wrong!');
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
     }
   };
@@ -71,26 +71,26 @@ const LocationAndTypeFilter = ({ navigation }) => {
   };
 
   const resetSearchValue = () => {
-    setSearch("");
+    setSearch('');
   };
 
   const handleCategoryClick = (label) => {
     setSelected(label);
 
     setTimeout(() => {
-      setError("");
+      setError('');
     }, 5000);
   };
 
   const handleSubmitClick = () => {
     if (selected && search.trim().length) {
-      navigation.navigate("All Businesses", {
+      navigation.navigate('All Businesses', {
         searchLocation: search.trim(),
-        category: selected,
+        category: selected
       });
       resetSearchValue();
     } else {
-      setError("Location was not specified!");
+      setError('Location was not specified!');
     }
   };
 
@@ -107,7 +107,7 @@ const LocationAndTypeFilter = ({ navigation }) => {
         <TouchableOpacity
           style={{
             ...styles.button,
-            backgroundColor: !search.trim().length ? "lightgray" : "#5fb7fe",
+            backgroundColor: !search.trim().length ? 'lightgray' : '#5fb7fe'
           }}
           onPress={handleSubmitClick}
         >

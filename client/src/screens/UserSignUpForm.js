@@ -1,20 +1,20 @@
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import { authsignup } from "../store/user";
-import styles from "../utils/styles/userSignUpForm";
-import { Formik, Field } from "formik";
-import * as yup from "yup";
-import CustomInput from "../components/CustomInput";
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { authsignup } from '../store/user';
+import styles from '../utils/styles/userSignUpForm';
+import { Formik, Field } from 'formik';
+import * as yup from 'yup';
+import CustomInput from '../components/CustomInput';
 
 const signUpValidationSchema = yup.object().shape({
-  firstName: yup.string().required("First name is required!"),
-  lastName: yup.string().required("Last name is required!"),
-  email: yup.string().email("Email is invalid!").required("Email is required!"),
+  firstName: yup.string().required('First name is required!'),
+  lastName: yup.string().required('Last name is required!'),
+  email: yup.string().email('Email is invalid!').required('Email is required!'),
   password: yup
     .string()
-    .min(6, "Password must have a minimum of 6 characters!")
-    .required("Password is required!"),
+    .min(6, 'Password must have a minimum of 6 characters!')
+    .required('Password is required!')
 });
 
 const UserSignUpForm = ({ navigation }) => {
@@ -34,10 +34,10 @@ const UserSignUpForm = ({ navigation }) => {
         <Formik
           validationSchema={signUpValidationSchema}
           initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: ''
           }}
           onSubmit={(values) => handleSubmitForm(values)}
         >
@@ -69,25 +69,25 @@ const UserSignUpForm = ({ navigation }) => {
                 style={{
                   ...styles.submitButton,
                   backgroundColor:
-                    !isValid || values.email === "" ? "lightgray" : "#5fb7fe",
-                  padding: "5%",
+                    !isValid || values.email === '' ? 'lightgray' : '#5fb7fe',
+                  padding: '5%'
                 }}
                 onPress={handleSubmit}
-                disabled={!isValid || values.email === ""}
+                disabled={!isValid || values.email === ''}
               >
                 <Text style={styles.submitButtonText}>Submit</Text>
               </TouchableOpacity>
             </>
           )}
         </Formik>
-        <Text>{error ? `${error}` : ""}</Text>
+        <Text>{error ? `${error}` : ''}</Text>
         <View>
           <Text>Have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.text}> Log in here.</Text>
           </TouchableOpacity>
           <Text style={styles.paragraph}>Are you an owner?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Owner Signup")}>
+          <TouchableOpacity onPress={() => navigation.navigate('Owner Signup')}>
             <Text style={styles.text}>Sign up here.</Text>
           </TouchableOpacity>
         </View>
