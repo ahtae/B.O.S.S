@@ -1,93 +1,93 @@
-const db = require('../db');
+const db = require("../db");
 const { Sequelize } = db;
 
-const Business = db.define('business', {
+const Business = db.define("business", {
   isVerified: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   address: {
     type: Sequelize.TEXT,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   phone: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   type: {
     type: Sequelize.STRING,
     allowNull: true,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   website: {
     type: Sequelize.STRING,
     allowNull: true,
     validate: {
       notEmpty: true,
-      isUrl: true
-    }
+      isUrl: true,
+    },
   },
   images: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.STRING),
   },
   hours: {
     type: Sequelize.TEXT,
     allowNull: true,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   city: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   state: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   postalCode: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   longitude: {
     type: Sequelize.DECIMAL,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   latitude: {
     type: Sequelize.DECIMAL,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   isClosed: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
-  }
+      notEmpty: true,
+    },
+  },
 });
 
 module.exports = Business;
