@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Categories } from '../components/index';
-import styles from '../utils/styles/typeFilter';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { Categories } from "../components/index";
+import styles from "../utils/styles/typeFilter";
 
 const TypeFilter = ({ navigation }) => {
-  const [selected, setSelected] = useState('All Businesses');
+  const [selected, setSelected] = useState("All Businesses");
 
   const handleCategoryClick = (label) => {
     setSelected(label);
   };
 
   const handleSubmitClick = () => {
-    navigation.navigate('All Businesses', {
-      searchLocation: '',
-      category: selected
+    navigation.navigate("All Businesses", {
+      searchLocation: "",
+      category: selected,
     });
   };
 

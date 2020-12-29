@@ -1,24 +1,24 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import styles from '../utils/styles/options';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import styles from "../utils/styles/options";
 
 const Options = ({ navigation }) => {
   const navigateToLocationAndTypeFilter = () => {
-    navigation.navigate('Location and Type');
+    navigation.navigate("Location and Type");
   };
 
   const navigateToLocationFilter = () => {
-    navigation.navigate('Location');
+    navigation.navigate("Location");
   };
 
   const navigateToTypeFilter = () => {
-    navigation.navigate('Type');
+    navigation.navigate("Type");
   };
 
   const navigateToAllBusinesses = () => {
-    navigation.navigate('All Businesses', {
-      searchLocation: '',
-      category: ''
+    navigation.navigate("All Businesses", {
+      searchLocation: "",
+      category: "",
     });
   };
 
