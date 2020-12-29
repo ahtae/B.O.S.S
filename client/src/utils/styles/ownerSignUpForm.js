@@ -7,6 +7,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1
   },
+  submitButton: {
+    alignItems: 'center',
+    marginVertical: 10,
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    width: 300
+  },
+  submitButtonText: {
+    fontFamily: 'Roboto_700Bold',
+    color: 'black',
+    fontSize: 15
+  },
   text: {
     fontWeight: 'bold',
     textAlign: 'center'
@@ -20,7 +33,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   paragraph: {
-    marginTop: 10
+    marginTop: 0
   },
   loginContainer: {
     width: '80%',
@@ -32,7 +45,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 40,
     width: '80%',
-    margin: 10,
+    margin: 30,
     backgroundColor: 'rgb(245, 245, 245)',
     borderStyle: 'solid',
     borderWidth: 2,

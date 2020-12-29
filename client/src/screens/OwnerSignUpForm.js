@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import Logo from '../components/Logo';
 import { authsignup } from '../store/user';
 import styles from '../utils/styles/ownerSignUpForm';
 import { Formik, Field } from 'formik';
@@ -15,7 +14,7 @@ const signUpValidationSchema = yup.object().shape({
   password: yup
     .string()
     .min(6, 'Password must have a minimum of 6 characters!')
-    .required('Password is required'),
+    .required('Password is required!'),
   companyName: yup.string().required('Company name is required!'),
   companyAddress: yup.string().required('Company address is required!')
 });
@@ -33,7 +32,6 @@ const OwnerSignUpForm = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Logo />
         <Text style={styles.title}>Sign Up</Text>
         <Formik
           validationSchema={signUpValidationSchema}
@@ -81,11 +79,18 @@ const OwnerSignUpForm = ({ navigation }) => {
                 name="companyAddress"
                 placeholder="Company Address"
               />
-              <Button
+              <TouchableOpacity
+                style={{
+                  ...styles.submitButton,
+                  backgroundColor:
+                    !isValid || values.email === '' ? 'lightgray' : '#5fb7fe',
+                  padding: '5%'
+                }}
                 onPress={handleSubmit}
-                title="Submit"
                 disabled={!isValid || values.email === ''}
-              />
+              >
+                <Text style={styles.submitButtonText}>Submit</Text>
+              </TouchableOpacity>
             </>
           )}
         </Formik>
