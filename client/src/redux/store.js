@@ -10,7 +10,8 @@ import {
   userReducer,
   ownerReducer,
   errorReducer,
-  usersReducer
+  usersReducer,
+  loadingReducer
 } from './reducers';
 
 const reducer = combineReducers({
@@ -21,7 +22,8 @@ const reducer = combineReducers({
   comments: commentsReducer,
   users: usersReducer,
   error: errorReducer,
-  photo: photoReducer
+  photo: photoReducer,
+  loading: loadingReducer
 });
 
 const middleware = composeWithDevTools(
