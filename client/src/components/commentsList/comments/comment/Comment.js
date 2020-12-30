@@ -42,9 +42,10 @@ const Comment = ({ information, type }) => {
   );
 
   const deleteButton =
-    (user && user.isAdmin) || (user && commentUser.id === user.id) ? (
+    (user && user.isAdmin) ||
+    (user && commentUser && commentUser.id === user.id) ? (
       <IconButton
-        style={styles.icon}
+        style={{ ...styles.updateButton, top: -5 }}
         size={20}
         icon="delete"
         onPress={() => handleRemoveClick(id)}
@@ -52,12 +53,14 @@ const Comment = ({ information, type }) => {
       />
     ) : null;
 
-  const userInformation = type === 'update' && (
-    <View>
-      <Image style={styles.userImage} source={{ uri: `${image}` }} />
-      <Text>{`${firstName} ${lastName}`}</Text>
-    </View>
-  );
+  const userInformation =
+    type === 'update' ||
+    (type === 'regular' && (
+      <View>
+        <Image style={styles.userImage} source={{ uri: `${image}` }} />
+        <Text>{`${firstName} ${lastName}`}</Text>
+      </View>
+    ));
 
   const reviewPhoto = photo ? (
     <View style={styles.photoContainer}>
@@ -68,8 +71,11 @@ const Comment = ({ information, type }) => {
   return (
     <View style={styles.containerStyle}>
       <View style={styles.row}>
-        {updateButton}
-        <Text style={styles.typeText}>{typeOutput}</Text>
+        <View style={styles.row}>
+          {updateButton}
+          <Text style={styles.typeText}>{typeOutput}</Text>
+        </View>
+
         {deleteButton}
       </View>
       {userInformation}
