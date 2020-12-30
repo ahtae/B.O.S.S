@@ -1,22 +1,41 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { authlogin } from '../store/user';
+import { authlogin } from '../redux/actions/user';
 import styles from '../utils/styles/login';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { removeErrors } from '../store/error';
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const error = useSelector((state) => state.error);
 
-  const signup = () => navigation.navigate('User Signup');
+  const signup = () => {
+    if (route && route.params && route.params.businessId) {
+      navigation.navigate('User Signup', {
+        businessId: route.params.businessId
+      });
+    } else {
+      navigation.navigate('User Signup');
+    }
+  };
 
   const handleSubmitForm = (values) => {
     const { email, password } = values;
 
-    dispatch(authlogin(email, password));
+    if (route && route.params && route.params.businessId) {
+      const { businessId } = route.params;
+
+      dispatch(authlogin(email, password, businessId));
+    } else {
+      dispatch(authlogin(email, password));
+    }
+
+    setTimeout(() => {
+      dispatch(removeErrors());
+    }, 5000);
   };
 
   const loginValidationSchema = yup.object().shape({
@@ -83,15 +102,7 @@ const Login = ({ navigation }) => {
                 onPress={handleSubmit}
                 disabled={!isValid || values.email === ''}
               >
-                <Text
-                  style={{
-                    fontFamily: 'Roboto_700Bold',
-                    color: 'black',
-                    fontSize: 15
-                  }}
-                >
-                  Submit
-                </Text>
+                <Text style={styles.submitButtonText}>Submit</Text>
               </TouchableOpacity>
             </>
           )}
