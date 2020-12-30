@@ -2,7 +2,77 @@
 
 B.O.S.S. is a React Native application that is intended to help bridge the racial wealth gap and strengthen local economies. It provides consumers the ability to browse and search for black-owned businesses that they can support. Business owners can also add themselves and their businesses.
 
-To run our application, go [here](https://expo.io/@teamhackerdelta/BOSS) and click 'Open project in the browser', or if you have an Android phone, scan our QR code to load the application immediately. 
+To run our application, go [here](https://expo.io/@teamhackerdelta/BOSS) and click 'Open project in the browser', or if you have an Android phone, scan our QR code to load the application immediately.
+
+**_ The comments are not real or reflective of the businesses shown. They are simply there for demonstrative purposes. _**
+
+## Features
+
+- User authentication.
+- Form validation.
+- Users can comment on businesses.
+- Users can remove their own comments and view comments.
+- Users can view the profile of business owners.
+- Users can filter businesses based on category type and/or location (through reverse geolocation).
+- If a user attempts to write a comment and they are not logged in, they will be prompted to either log in or sign up.
+- Users can have updated reviews like Yelp.
+
+## Home Screen
+
+<img src="./screenshots/HomeScreen.jpeg" width="250" height="400" />
+
+## Login Screen
+
+<img src="./screenshots/LoginScreen.jpeg" width="250" height="400" />
+<img src="./screenshots/LoginScreenValidation.jpeg" width="250" height="400" />
+
+## User Sign Up Screen
+
+<img src="./screenshots/UserSignUpScreen.jpeg" width="250" height="400" />
+<img src="./screenshots/UserSignUpScreenValidation.jpeg" width="250" height="400" />
+
+## Owner Sign Up Screen
+
+<img src="./screenshots/OwnerSignUpScreen.jpg" width="250" height="400" />
+<img src="./screenshots/OwnerSignUpScreenValidation.jpeg" width="250" height="400" />
+
+## Filter Options Screen
+
+<img src="./screenshots/FilterOptionsScreen.jpg" width="250" height="400" />
+<img src="./screenshots/FilterOption1Screen.jpeg" width="250" height="400" />
+<img src="./screenshots/FilterOption2Screen.jpeg" width="250" height="400" />
+<img src="./screenshots/FilterOption3Screen.jpg" width="250" height="400" />
+
+## Businesses Screen
+
+<img src="./screenshots/BusinessesScreen1.jpeg" width="250" height="400" />
+<img src="./screenshots/BusinessesScreen2.jpeg" width="250" height="400" />
+
+## Business Screen
+
+<img src="./screenshots/BusinessScreen1.jpeg" width="250" height="400" />
+<img src="./screenshots/BusinessScreen2.jpeg" width="250" height="400" />
+<img src="./screenshots/BusinessScreen3.jpeg" width="250" height="400" />
+
+## Business Screen (Logged In)
+
+<img src="./screenshots/BusinessScreen4.jpeg" width="250" height="400" />
+<img src="./screenshots/BusinessScreen5.jpeg" width="250" height="400" />
+<img src="./screenshots/BusinessScreen6.jpeg" width="250" height="400" />
+
+## Prompt Screen
+
+<img src="./screenshots/PromptScreen.jpeg" width="250" height="400" />
+
+## Comment Form Screen
+
+<img src="./screenshots/CommentFormScreen1.jpeg" width="250" height="400" />
+<img src="./screenshots/CommentFormScreen2.jpeg" width="250" height="400" />
+
+## Business Owner Screen
+
+<img src="./screenshots/BusinessOwnerScreen1.jpg" width="250" height="400" />
+<img src="./screenshots/BusinessOwnerScreen2.jpg" width="250" height="400" />
 
 ## Getting Started
 
@@ -21,30 +91,8 @@ To get acclimated, follow the steps below:
 2. Install [Expo CLI](https://docs.expo.io/get-started/installation/).
 3. Run cd capstone and npm install or yarn install (depending on which package manager you have installed) to install the necessary packages.
 4. Create a database called capstone and capstone-test.
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+5. Open a terminal and run npm run seed to seed the database.
+6. Open a terminal and run npm run start to run the server and open another terminal to run npm run expo.
 
 ## Built With
 
@@ -58,12 +106,12 @@ Add additional notes about how to deploy this on a live system
 - [Axios](https://github.com/axios/axios) - The JavaScript library used to make HTTP requests.
 - [ESlint](https://eslint.org) - The tool used to maintain code quality.
 - [Prettier](https://prettier.io) - The tool used to format code.
-- [React Navigation Router Flux](https://reactnavigation.org) - The JavaScript library used for routing and navigation in React Native Applications.
+- [React Navigation](https://reactnavigation.org) - The JavaScript library used for routing and navigation in React Native Applications.
 - [React Native Paper](https://callstack.github.io/react-native-paper/) - The JavaScript library used to customize screens with production-ready components.
 - [Heroku](https://www.heroku.com/) - The cloud platform used to host our Express server.
 - [React Native Maps](https://github.com/react-native-community/react-native-maps) - The JavaScript library used to build maps and create markers.
 - [React Native Snap Carousel](https://github.com/archriss/react-native-snap-carousel) - The JavaScript library used to create a carousel.
-- [React Native Uuid](https://github.com/eugenehp/react-native-uuid) - The JavaScript library used to generated UUIDs.
+- [HERE Geocoding and Search](https://developer.here.com/products/geocoding-and-search) - The API used for reverse geocoding.
 
 ## Contributing
 
