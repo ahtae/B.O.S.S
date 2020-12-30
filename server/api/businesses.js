@@ -5,16 +5,62 @@ const {
   validateUser,
   validateUserOrAdmin
 } = require('../utils/permission');
+const { Op } = require('sequelize');
 const router = express();
 
 router.get('/', async (req, res, next) => {
+  const { city, category } = req.query;
+
   try {
-    const businesses = await Business.findAll({
-      include: [
-        { model: Comment, include: { model: User } },
-        { model: User, as: 'owner' }
-      ]
-    });
+    let businesses;
+
+    if (category && city) {
+      businesses = await Business.findAll({
+        where: {
+          type: {
+            [Op.eq]: category
+          },
+          city: {
+            [Op.eq]: city
+          }
+        },
+        include: [
+          { model: Comment, include: { model: User } },
+          { model: User, as: 'owner' }
+        ]
+      });
+    } else if (city && !category) {
+      businesses = await Business.findAll({
+        where: {
+          city: {
+            [Op.eq]: city
+          }
+        },
+        include: [
+          { model: Comment, include: { model: User } },
+          { model: User, as: 'owner' }
+        ]
+      });
+    } else if (category && !city) {
+      businesses = await Business.findAll({
+        where: {
+          type: {
+            [Op.eq]: category
+          }
+        },
+        include: [
+          { model: Comment, include: { model: User } },
+          { model: User, as: 'owner' }
+        ]
+      });
+    } else {
+      businesses = await Business.findAll({
+        include: [
+          { model: Comment, include: { model: User } },
+          { model: User, as: 'owner' }
+        ]
+      });
+    }
 
     res.status(200).json(businesses);
   } catch (err) {
