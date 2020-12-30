@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Card, Title, Paragraph, IconButton } from 'react-native-paper';
-import { removeBusinessFromServer } from '../../../../store/business';
+import { removeBusinessFromServer } from '../../../../redux/actions/businesses';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../../utils/styles/businessCard';
 

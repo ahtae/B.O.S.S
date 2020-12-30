@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Paragraph, IconButton } from 'react-native-paper';
 import { View, Text, Image } from 'react-native';
 import { Rating } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { removeCommentFromServer } from '../../../../store/comments';
+import { removeCommentFromServer } from '../../../../redux/store/comments';
 import { useDispatch } from 'react-redux';
 import styles from '../../../../utils/styles/comment';
 
