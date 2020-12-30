@@ -6,6 +6,8 @@ const {
   validateUser,
   validateUserOrAdmin
 } = require('../utils/permission');
+const upload = require('../utils/multerConfig');
+const cloudinary = require('../utils/cloudinaryConfig');
 
 router.get('/:id', async (req, res, next) => {
   try {
@@ -20,6 +22,31 @@ router.get('/:id', async (req, res, next) => {
     res.status(200).json(comments);
   } catch (err) {
     console.log(err);
+  }
+});
+
+router.get('/', async (req, res, next) => {
+  try {
+    const comments = await Comment.findAll({});
+
+    res.status(200).json(comments);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post('/upload', upload.single('image'), async (req, res, next) => {
+  try {
+    const newPhoto = req.files['photo'].data.toString('base64');
+    const type = req.files['photo'].mimetype;
+
+    const result = await cloudinary.uploader.upload(
+      `data:${type};base64,${newPhoto}`
+    );
+
+    res.status(200).json(result.url);
+  } catch (error) {
+    next(error);
   }
 });
 
