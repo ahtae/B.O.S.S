@@ -11,6 +11,7 @@ import { removeErrors } from '../redux/actionCreators/error';
 
 const BusinessesList = ({ route, navigation }) => {
   const { searchLocation, category } = route.params;
+  const error = useSelector((state) => state.error);
   const businesses = useSelector((state) => state.businesses);
   const dispatch = useDispatch();
   const [markers, setMarkers] = useState([]);
@@ -104,7 +105,7 @@ const BusinessesList = ({ route, navigation }) => {
       {businesses ? (
         <ScrollView>
           <Title style={styles.titleStyle}>Businesses</Title>
-          <Text style={styles.errorStyle}>{errorMessage}</Text>
+          <Text style={styles.errorStyle}>{error}</Text>
           {output}
         </ScrollView>
       ) : (
