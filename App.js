@@ -1,55 +1,61 @@
-import * as React from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Router, Stack, Scene } from 'react-native-router-flux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   BusinessesList,
   BusinessOwnerProfile,
   CommentForm,
-  HomeScreen,
-  SignIn,
-  SignUp,
+  UserSignUpForm,
+  Home,
+  LoginForm,
+  OwnerSignUpForm,
   SingleBusiness,
-  OwnerFormSignUp,
+  LocationAndTypeFilter,
+  LocationFilter,
+  TypeFilter,
   Prompt,
-  UsersList
-} from './client/components';
-import store from './client/store';
+  Options
+} from './client/src/screens';
+import store from './client/src/redux/store';
+import { navigationRef } from './client/src/utils/RootNavigation';
 import { Provider } from 'react-redux';
+
+const Stack = createStackNavigator();
+
+function MyStack() {
+  return (
+    <Stack.Navigator headerMode={false}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen
+        name="Location and Type"
+        component={LocationAndTypeFilter}
+      />
+      <Stack.Screen name="Location" component={LocationFilter} />
+      <Stack.Screen name="Type" component={TypeFilter} />
+      <Stack.Screen name="All Businesses" component={BusinessesList} />
+      <Stack.Screen name="Login" component={LoginForm} />
+      <Stack.Screen name="Business" component={SingleBusiness} />
+      <Stack.Screen name="User Signup" component={UserSignUpForm} />
+      <Stack.Screen name="Owner Signup" component={OwnerSignUpForm} />
+      <Stack.Screen name="Comment Form" component={CommentForm} />
+      <Stack.Screen
+        name="Business Owner Profile"
+        component={BusinessOwnerProfile}
+      />
+      <Stack.Screen name="Prompt" component={Prompt} />
+      <Stack.Screen name="Options" component={Options} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <StatusBar style="auto" />
-      <Router>
-        <Stack key="root" hideNavBar>
-          <Scene key="home" component={HomeScreen} initial />
-          <Scene key="users" component={UsersList} title="Users" />
-          <Scene key="signin" component={SignIn} title="SignIn" />
-          <Scene key="signup" component={SignUp} title="Signup" />
-          <Scene
-            key="businesses"
-            component={BusinessesList}
-            title="Businesses"
-          />
-          <Scene key="business" component={SingleBusiness} title="Business" />
-          <Scene
-            key="commentForm"
-            component={CommentForm}
-            title="commentForm"
-          />
-          <Scene
-            key="ownerProfile"
-            component={BusinessOwnerProfile}
-            title="Owner Profile"
-          />
-          <Scene key="prompt" component={Prompt} title="Prompt" />
-          <Scene
-            key="ownerSignup"
-            component={OwnerFormSignUp}
-            title="OwnerSignUp"
-          />
-        </Stack>
-      </Router>
-    </Provider>
+    <NavigationContainer ref={navigationRef}>
+      <Provider store={store}>
+        <StatusBar style="auto" />
+        <MyStack />
+      </Provider>
+    </NavigationContainer>
   );
 }
