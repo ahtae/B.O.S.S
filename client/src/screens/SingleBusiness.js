@@ -23,6 +23,7 @@ const SingleBusiness = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const business = useSelector((state) => state.business);
   const comments = useSelector((state) => state.comments);
+  const loading = useSelector((state) => state.loading);
 
   useEffect(() => {
     dispatch(fetchCommentsFromServer(id));
@@ -30,8 +31,13 @@ const SingleBusiness = ({ route, navigation }) => {
 
   useEffect(() => {
     dispatch(fetchBusinessFromServer(id));
+
     return () => dispatch(unmountBusiness());
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const {
     latitude,
@@ -166,35 +172,31 @@ const SingleBusiness = ({ route, navigation }) => {
     </View>
   ) : null;
 
-  if (business) {
-    return (
-      <SafeAreaView>
-        <ScrollView>
-          <View style={styles.backgroundStyle}>
-            <Title style={styles.titleStyle}>{name}</Title>
-            {ownerInfo}
-            <Rating
-              type="custom"
-              ratingCount={5}
-              imageSize={20}
-              startingValue={calculatedTotalRating}
-              readonly={true}
-            />
-            {imageOutput}
-            {location}
-            {hoursOutput}
-            <CommentsList
-              navigation={navigation}
-              arrayOfComments={arrayOfComments}
-              business={business}
-            />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  } else {
-    return <Loading />;
-  }
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.backgroundStyle}>
+          <Title style={styles.titleStyle}>{name}</Title>
+          {ownerInfo}
+          <Rating
+            type="custom"
+            ratingCount={5}
+            imageSize={20}
+            startingValue={calculatedTotalRating}
+            readonly={true}
+          />
+          {imageOutput}
+          {location}
+          {hoursOutput}
+          <CommentsList
+            navigation={navigation}
+            arrayOfComments={arrayOfComments}
+            business={business}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 
 export default SingleBusiness;

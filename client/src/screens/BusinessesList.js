@@ -12,6 +12,7 @@ import { removeErrors } from '../redux/actionCreators/error';
 const BusinessesList = ({ route, navigation }) => {
   const { searchLocation, category } = route.params;
   const error = useSelector((state) => state.error);
+  const loading = useSelector((state) => state.loading);
   const businesses = useSelector((state) => state.businesses);
   const dispatch = useDispatch();
   const [markers, setMarkers] = useState([]);
@@ -65,6 +66,10 @@ const BusinessesList = ({ route, navigation }) => {
     createMarkersHook();
   }, [businesses]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   const output =
     averageLatitude && averageLongitude ? (
       <View>
@@ -102,15 +107,11 @@ const BusinessesList = ({ route, navigation }) => {
 
   return (
     <SafeAreaView>
-      {businesses ? (
-        <ScrollView>
-          <Title style={styles.titleStyle}>Businesses</Title>
-          <Text style={styles.errorStyle}>{error}</Text>
-          {output}
-        </ScrollView>
-      ) : (
-        <Loading />
-      )}
+      <ScrollView>
+        <Title style={styles.titleStyle}>Businesses</Title>
+        <Text style={styles.errorStyle}>{error}</Text>
+        {output}
+      </ScrollView>
     </SafeAreaView>
   );
 };

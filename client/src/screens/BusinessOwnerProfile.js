@@ -12,9 +12,11 @@ import { fetchOwnerFromServer } from '../redux/actions/owner';
 import styles from '../utils/styles/businessOwnerProfile';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeErrors } from '../redux/actionCreators/error';
+import { Loading } from '../components';
 
 const BusinessOwnerProfile = ({ route, navigation }) => {
   const { id } = route.params;
+  const loading = useSelector((state) => state.loading);
   const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const owner = useSelector((state) => state.owner);
@@ -57,6 +59,10 @@ const BusinessOwnerProfile = ({ route, navigation }) => {
         ))}
       </View>
     ) : null;
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (!Object.keys(owner).length) {
     return <Text style={styles.errorStyle}>{error}</Text>;
