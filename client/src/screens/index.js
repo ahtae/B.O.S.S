@@ -1,4 +1,3 @@
-// import BusinessCard from './BusinessCard';
 import BusinessesList from './BusinessesList';
 import BusinessOwnerProfile from './BusinessOwnerProfile';
 import LoginForm from './LoginForm';
