@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, SafeAreaView } from 'react-native';
 import { Title } from 'react-native-paper';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 import { Businesses } from '../components/index';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { fetchBusinessesFromServer } from '../store/businesses';
+import { fetchBusinessesFromServer } from '../redux/actions/businesses';
 import { Loading } from '../components';
 import styles from '../utils/styles/businessLists';
 import { useDispatch, useSelector } from 'react-redux';
+import { removeErrors } from '../redux/actionCreators/error';
 
 const BusinessesList = ({ route, navigation }) => {
   const { searchLocation, category } = route.params;
   const businesses = useSelector((state) => state.businesses);
   const dispatch = useDispatch();
   const [markers, setMarkers] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
   const [averageLatitude, setAverageLatitude] = useState(null);
   const [averageLongitude, setAverageLongitude] = useState(null);
 
   const getAllBusinessesHook = () => {
-    try {
-      dispatch(fetchBusinessesFromServer(searchLocation, category));
-    } catch (err) {
-      setErrorMessage('Something went wrong!');
-      console.log(err);
-    }
+    dispatch(fetchBusinessesFromServer(searchLocation, category));
+
+    setTimeout(() => {
+      dispatch(removeErrors());
+    }, 5000);
   };
 
   const createMarkersHook = () => {
@@ -47,14 +44,14 @@ const BusinessesList = ({ route, navigation }) => {
           0
         ) / businesses.length
       : 0;
-    setAverageLongitude(longitude);
-
     const latitude = businesses.length
       ? businesses.reduce(
           (sum, business) => Number(business.latitude) + sum,
           0
         ) / businesses.length
       : 0;
+
+    setAverageLongitude(longitude);
     setAverageLatitude(latitude);
   };
 
@@ -77,8 +74,8 @@ const BusinessesList = ({ route, navigation }) => {
           region={{
             latitude: averageLatitude,
             longitude: averageLongitude,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1
+            latitudeDelta: 0.3,
+            longitudeDelta: 0.3
           }}
           zoomEnabled={true}
           scrollEnabled={true}
@@ -92,6 +89,15 @@ const BusinessesList = ({ route, navigation }) => {
         <Businesses navigation={navigation} businesses={businesses} />
       </View>
     ) : null;
+
+  if (businesses && !businesses.length) {
+    return (
+      <View>
+        <Title style={styles.titleStyle}>Businesses</Title>
+        <Text style={styles.paragraph}>No businesses to show!</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView>
