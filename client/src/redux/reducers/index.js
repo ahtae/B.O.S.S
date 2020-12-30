@@ -6,6 +6,7 @@ import userReducer from './user';
 import ownerReducer from './owner';
 import errorReducer from './error';
 import usersReducer from './users';
+import loadingReducer from './loading';
 
 export { businessesReducer };
 export { businessReducer };
@@ -15,3 +16,4 @@ export { userReducer };
 export { ownerReducer };
 export { errorReducer };
 export { usersReducer };
+export { loadingReducer };
