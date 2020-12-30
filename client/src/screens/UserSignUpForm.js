@@ -6,7 +6,7 @@ import styles from '../utils/styles/userSignUpForm';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import CustomInput from '../components/CustomInput';
-import { removeErrors } from '../store/error';
+import { removeErrors } from '../redux/actionCreators/error';
 
 const signUpValidationSchema = yup.object().shape({
   firstName: yup.string().required('First name is required!'),
