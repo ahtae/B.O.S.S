@@ -4,7 +4,7 @@ B.O.S.S. is a React Native application that is intended to help bridge the racia
 
 To run our application, go [here](https://expo.io/@teamhackerdelta/BOSS) and click 'Open project in the browser', or if you have an Android phone, scan our QR code to load the application immediately.
 
-**_ The comments are not real or reflective of the businesses shown. They are simply there for demonstrative purposes. _**
+*** The comments are not real or reflective of the businesses shown. They are simply there for demonstrative purposes. ***
 
 ## Features
 
