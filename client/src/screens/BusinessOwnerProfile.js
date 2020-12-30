@@ -8,29 +8,30 @@ import {
 } from 'react-native';
 import { Card, Paragraph } from 'react-native-paper';
 import { BusinessCard } from '../components';
-import { fetchOwnerFromServer } from '../store/owner';
+import { fetchOwnerFromServer } from '../redux/actions/owner';
 import styles from '../utils/styles/businessOwnerProfile';
 import { useSelector, useDispatch } from 'react-redux';
+import { removeErrors } from '../redux/actionCreators/error';
 
 const BusinessOwnerProfile = ({ route, navigation }) => {
   const { id } = route.params;
-  const [errorMessage, setErrorMessage] = useState('');
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const owner = useSelector((state) => state.owner);
 
   const getBusinessesOwnedHook = () => {
-    try {
-      dispatch(fetchOwnerFromServer(id));
-    } catch (error) {
-      setErrorMessage("Couldn't get businesses owned :(");
-    }
+    dispatch(fetchOwnerFromServer(id));
+
+    setTimeout(() => {
+      dispatch(removeErrors());
+    }, 5000);
   };
 
   useEffect(() => {
     getBusinessesOwnedHook();
   }, []);
 
-  const handleNavigateToBusiness = () => {
+  const handleNavigateToBusiness = (business) => {
     navigation.navigate('Business', { id: business.id });
   };
 
@@ -49,13 +50,17 @@ const BusinessOwnerProfile = ({ route, navigation }) => {
           <TouchableOpacity
             key={business.id}
             activeOpacity={1.0}
-            onPress={handleNavigateToBusiness}
+            onPress={() => handleNavigateToBusiness(business.id)}
           >
             <BusinessCard business={business} />
           </TouchableOpacity>
         ))}
       </View>
     ) : null;
+
+  if (!Object.keys(owner).length) {
+    return <Text style={styles.errorStyle}>{error}</Text>;
+  }
 
   return (
     <SafeAreaView>
@@ -82,7 +87,7 @@ const BusinessOwnerProfile = ({ route, navigation }) => {
         >
           Businesses Owned by {owner.firstName}
         </Text>
-        <Text style={styles.errorStyle}>{errorMessage}</Text>
+        <Text style={styles.errorStyle}>{error}</Text>
         {showBusinessesOwned}
       </ScrollView>
     </SafeAreaView>
