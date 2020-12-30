@@ -11,8 +11,9 @@ import moment from 'moment';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Rating } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBusinessFromServer, unmountBusiness } from '../store/business';
-import { fetchCommentsFromServer } from '../store/comments';
+import { fetchBusinessFromServer } from '../redux/actions/business';
+import { unmountBusiness } from '../redux/actionCreators/business';
+import { fetchCommentsFromServer } from '../redux/actions/comments';
 import { CarouselOfImages, CommentsList } from '../components/index';
 import Loading from '../components/Loading';
 import styles from '../utils/styles/singleBusiness';
@@ -108,12 +109,11 @@ const SingleBusiness = ({ route, navigation }) => {
 
   const ownerInfo = owner ? (
     <TouchableOpacity
-      style={styles.ownerName}
       onPress={() =>
         navigation.navigate('Business Owner Profile', { id: owner.id })
       }
     >
-      <Subheading>
+      <Subheading style={styles.ownerName}>
         Owner: {owner.firstName} {owner.lastName}
       </Subheading>
     </TouchableOpacity>
