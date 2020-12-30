@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     width: 300
   },
   submitButtonText: {
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'Roboto_300Light',
     color: 'black',
     fontSize: 15
   },
   text: {
-    fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   navigationContainer: {
     margin: 15
@@ -49,11 +49,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(245, 245, 245)',
     borderStyle: 'solid',
     borderWidth: 2,
-    padding: 5
+    padding: 5,
+    fontFamily: 'Roboto_300Light'
   },
   errorText: {
     fontSize: 10,
-    color: 'red'
+    color: 'red',
+    fontWeight: 'bold',
+    marginTop: 10,
+    fontFamily: 'Roboto_300Light'
+  },
+  paragraphContainer: {
+    margin: 10
   }
 });
 

@@ -31,12 +31,14 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 23,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_300Light'
   },
   textStyle: {
     fontWeight: 'bold',
     fontSize: 20,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   hourStyle: {
     fontWeight: 'bold',
@@ -47,7 +49,8 @@ const styles = StyleSheet.create({
   },
   paragraphStyle: {
     fontSize: 15,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   imageStyle: {
     margin: '5%',

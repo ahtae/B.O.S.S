@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     width: 300
   },
   textSign: {
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'Roboto_300Light',
     color: 'black',
     fontSize: 15
   }

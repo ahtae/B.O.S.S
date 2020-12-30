@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     padding: '1%'
   },
   paragraphStyle: {
-    color: 'lightgray'
+    color: 'lightgray',
+    fontFamily: 'Roboto_300Light'
   },
   starStyle: {
     alignSelf: 'flex-start',
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
   textStyle: {
     fontWeight: 'bold',
     fontSize: 20,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   imageStyle: {
     flex: 1,

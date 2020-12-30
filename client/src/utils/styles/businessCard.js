@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
   },
   paragraphStyle: {
     textAlign: 'center',
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: 'Roboto_300Light'
   },
   imageStyle: {
     margin: '5%',

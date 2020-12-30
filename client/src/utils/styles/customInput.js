@@ -9,11 +9,14 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderStyle: 'solid',
     borderWidth: 2,
-    padding: 5
+    padding: 5,
+    fontFamily: 'Roboto_300Light'
   },
   errorText: {
     fontSize: 10,
-    color: 'red'
+    color: 'red',
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_300Light'
   },
   errorInput: {
     borderColor: 'red'

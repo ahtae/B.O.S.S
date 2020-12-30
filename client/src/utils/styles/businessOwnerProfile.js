@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginTop: '1%',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_300Light'
   },
   imageStyle: {
     fontSize: 18,
@@ -29,18 +30,21 @@ const styles = StyleSheet.create({
   },
   paragraphStyle: {
     fontSize: 15,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   textStyle: {
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    padding: '5%'
+    padding: '5%',
+    fontFamily: 'Roboto_300Light'
   },
   titleStyle: {
     fontSize: 25,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   }
 });
 

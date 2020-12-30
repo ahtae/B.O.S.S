@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   ownerName: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontFamily: 'Roboto_300Light'
   },
   starsStyle: {
     alignSelf: 'center'

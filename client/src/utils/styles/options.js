@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
     width: 300
   },
   buttonText: {
-    fontFamily: 'Roboto_700Bold',
     color: 'black',
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: 'Roboto_300Light'
   }
 });
 

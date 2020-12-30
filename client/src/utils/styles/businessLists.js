@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     marginTop: '1%',
     fontWeight: 'bold',
     fontFamily: 'Roboto_300Light'
+  },
+  paragraph: {
+    margin: 15,
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
   }
 });
 

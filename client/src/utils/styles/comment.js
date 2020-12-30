@@ -6,17 +6,31 @@ const styles = StyleSheet.create({
     marginBottom: '3%'
   },
   containerStyle: {
-    margin: '5%',
-    marginBottom: '3%',
-    textAlign: 'left',
-    borderColor: 'lightgray',
-    borderWidth: 1,
-    padding: '1%'
+    margin: 10,
+    backgroundColor: 'white'
   },
   photoStyle: {
     width: 100,
     height: 100,
     margin: '10%'
+  },
+  updateButton: {
+    margin: 0,
+    padding: 0,
+    justifyContent: 'flex-end'
+  },
+  row: {
+    alignItems: 'flex-end',
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 5,
+    marginBottom: 5
+  },
+  date: {
+    color: 'gray'
+  },
+  typeText: {
+    fontStyle: 'italic'
   },
   starStyle: {
     alignSelf: 'flex-start',
@@ -25,7 +39,8 @@ const styles = StyleSheet.create({
   userImage: {
     width: '10%',
     height: 27,
-    margin: 0,
+    marginTop: 10,
+    marginBottom: 10,
     padding: 0
   },
   icon: {
@@ -36,7 +51,9 @@ const styles = StyleSheet.create({
   commentImage: {
     width: 100,
     height: 100
-  }
+  },
+  title: { fontWeight: 'bold', marginTop: 5, marginBottom: 5 },
+  photoContainer: { marginTop: 5, marginBottom: 5 }
 });
 
 export default styles;

@@ -24,12 +24,17 @@ const styles = StyleSheet.create({
     width: 350
   },
   buttonText: {
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'Roboto_300Light',
     color: 'black',
     fontSize: 15,
     textAlign: 'center'
   },
-  errorText: { color: 'red', fontWeight: 'bold', textAlign: 'center' }
+  errorText: {
+    color: 'red',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'Roboto_300Light'
+  }
 });
 
 export default styles;
