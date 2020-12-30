@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { authsignup } from '../store/user';
+import { authsignup } from '../redux/actions/user';
 import styles from '../utils/styles/ownerSignUpForm';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import CustomInput from '../components/CustomInput';
+import { removeErrors } from '../store/error';
 
 const signUpValidationSchema = yup.object().shape({
   firstName: yup.string().required('First name is required!'),
@@ -19,14 +20,45 @@ const signUpValidationSchema = yup.object().shape({
   companyAddress: yup.string().required('Company address is required!')
 });
 
-const OwnerSignUpForm = ({ navigation }) => {
+const OwnerSignUpForm = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
 
   const handleSubmitForm = (values) => {
     const { firstName, lastName, email, password } = values;
 
-    dispatch(authsignup(firstName, lastName, email, password, true));
+    if (route && route.params && route.params.businessId) {
+      const { businessId } = route.params;
+
+      dispatch(
+        authsignup({
+          firstName,
+          lastName,
+          email,
+          password,
+          businessId,
+          isAdmin: true
+        })
+      );
+    } else {
+      dispatch(
+        authsignup({ firstName, lastName, email, password, isAdmin: true })
+      );
+    }
+
+    setTimeout(() => {
+      dispatch(removeErrors());
+    }, 5000);
+  };
+
+  const handleNavigateToUserSignUp = () => {
+    if (route && route.params && route.params.businessId) {
+      navigation.navigate('User Signup', {
+        businessId: route.params.businessId
+      });
+    } else {
+      navigation.navigate('User Signup');
+    }
   };
 
   return (
@@ -94,10 +126,10 @@ const OwnerSignUpForm = ({ navigation }) => {
             </>
           )}
         </Formik>
-        <Text>{error ? `${error}` : ''}</Text>
-        <View>
+        <Text style={styles.errorText}>{error ? `${error}!` : ''}</Text>
+        <View style={styles.paragraphContainer}>
           <Text style={styles.paragraph}>Not a business owner?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('User Signup')}>
+          <TouchableOpacity onPress={handleNavigateToUserSignUp}>
             <Text style={styles.text}> Sign up here.</Text>
           </TouchableOpacity>
         </View>
