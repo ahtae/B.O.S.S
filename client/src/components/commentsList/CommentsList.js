@@ -10,6 +10,12 @@ import styles from '../../utils/styles/commentsList';
 const CommentsList = ({ arrayOfComments, business, navigation }) => {
   const user = useSelector((state) => state.user);
 
+  const handleCommentClick = () => {
+    Object.keys(user).length
+      ? navigation.navigate('Comment Form', { business: business })
+      : navigation.navigate('Prompt', { businessId: business.id });
+  };
+
   const output = arrayOfComments.length ? (
     <View>
       {arrayOfComments.map((comments) => {
@@ -29,11 +35,7 @@ const CommentsList = ({ arrayOfComments, business, navigation }) => {
       <Title style={styles.textStyle}>Recommended Reviews</Title>
       {user && user.isAdmin ? null : (
         <View style={styles.containerStyle}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('Comment Form', { business: business })
-            }
-          >
+          <TouchableOpacity onPress={handleCommentClick}>
             <Rating
               type="custom"
               ratingCount={5}
