@@ -82,7 +82,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     margin: 10
   },
-  closeIconButton: { margin: 0, padding: 0 }
+  closeIconButton: { margin: 0, padding: 0 },
+  errorStyle: {
+    fontSize: 10,
+    color: 'red',
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_300Light',
+    margin: 5
+  }
 });
 
 export default styles;

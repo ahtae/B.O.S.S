@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
     padding: '1%'
   },
   icon: {
-    margin: 0,
-    padding: 0
+    width: 12,
+    height: 12
   },
   paragraphStyle: {
     color: 'lightgray',

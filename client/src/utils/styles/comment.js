@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     marginBottom: '3%'
   },
   containerStyle: {
-    margin: 10,
+    marginLeft: 10,
     backgroundColor: 'white'
   },
   photoStyle: {
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
   userImage: {
     width: '10%',
     height: 27,
-    marginTop: 10,
     marginBottom: 10,
     padding: 0
   },
