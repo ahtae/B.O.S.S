@@ -5,7 +5,7 @@ import { authlogin } from '../redux/actions/user';
 import styles from '../utils/styles/login';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { removeErrors } from '../store/error';
+import { removeErrors } from '../redux/actionCreators/error';
 
 const Login = ({ navigation, route }) => {
   const dispatch = useDispatch();

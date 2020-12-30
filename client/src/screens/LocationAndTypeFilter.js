@@ -24,6 +24,7 @@ const LocationAndTypeFilter = ({ navigation }) => {
       });
     } catch (err) {
       setError('Permission to access location was denied!');
+
       setTimeout(() => {
         setError('');
       }, 5000);
