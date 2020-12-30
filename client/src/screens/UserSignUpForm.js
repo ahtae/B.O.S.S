@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { authsignup } from '../store/user';
+import { authsignup } from '../redux/actions/user';
 import styles from '../utils/styles/userSignUpForm';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import CustomInput from '../components/CustomInput';
+import { removeErrors } from '../store/error';
 
 const signUpValidationSchema = yup.object().shape({
   firstName: yup.string().required('First name is required!'),
@@ -17,14 +18,45 @@ const signUpValidationSchema = yup.object().shape({
     .required('Password is required!')
 });
 
-const UserSignUpForm = ({ navigation }) => {
+const UserSignUpForm = ({ route, navigation }) => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
 
   const handleSubmitForm = (values) => {
     const { firstName, lastName, email, password } = values;
 
-    dispatch(authsignup(firstName, lastName, email, password));
+    if (route && route.params && route.params.businessId) {
+      const { businessId } = route.params;
+
+      dispatch(
+        authsignup({ firstName, lastName, email, password, businessId })
+      );
+    } else {
+      dispatch(authsignup({ firstName, lastName, email, password }));
+    }
+
+    setTimeout(() => {
+      dispatch(removeErrors());
+    }, 5000);
+  };
+
+  const handleNavigateToLogin = () => {
+    if (route && route.params && route.params.businessId) {
+      navigation.navigate('Login', { businessId: route.params.businessId });
+    } else {
+      navigation.navigate('Login');
+    }
+  };
+
+  const handleNavigateToOwnerSignUp = () => {
+    if (route && route.params && route.params.businessId) {
+      navigation.navigate('Owner Signup', {
+        businessId: route.params.businessId
+      });
+    } else {
+      navigation.navigate('Owner Signup');
+    }
   };
 
   return (
@@ -80,14 +112,14 @@ const UserSignUpForm = ({ navigation }) => {
             </>
           )}
         </Formik>
-        <Text>{error ? `${error}` : ''}</Text>
+        <Text style={styles.errorText}>{error ? `${error}!` : ''}</Text>
         <View>
           <Text>Have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={handleNavigateToLogin}>
             <Text style={styles.text}> Log in here.</Text>
           </TouchableOpacity>
           <Text style={styles.paragraph}>Are you an owner?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Owner Signup')}>
+          <TouchableOpacity onPress={handleNavigateToOwnerSignUp}>
             <Text style={styles.text}>Sign up here.</Text>
           </TouchableOpacity>
         </View>
