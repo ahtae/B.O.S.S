@@ -23,6 +23,7 @@ const LocationFilter = ({ navigation }) => {
       });
     } catch (err) {
       setError('Permission to access location was denied!');
+
       setTimeout(() => {
         setError('');
       }, 5000);
@@ -49,6 +50,7 @@ const LocationFilter = ({ navigation }) => {
       }
     } catch (err) {
       setError('Something went wrong!');
+
       setTimeout(() => {
         setError('');
       }, 5000);
@@ -74,7 +76,7 @@ const LocationFilter = ({ navigation }) => {
   };
 
   const handleSubmitClick = () => {
-    if (selected && search.trim().length) {
+    if (search.trim().length) {
       navigation.navigate('All Businesses', {
         searchLocation: search.trim(),
         category: ''
@@ -83,6 +85,7 @@ const LocationFilter = ({ navigation }) => {
       resetSearchValue();
     } else {
       setError('Location was not specified!');
+
       setTimeout(() => {
         setError('');
       }, 5000);
