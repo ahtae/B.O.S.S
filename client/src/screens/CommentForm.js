@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -13,10 +13,9 @@ import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
 import { useSelector, useDispatch } from 'react-redux';
-import { createCommentFromServer } from '../store/comments';
+import { createCommentFromServer } from '../redux/actions/comments';
 import styles from '../utils/styles/commentForm';
-import { uploadPhotoToTheServer } from '../store/photo';
-import { AsyncStorage } from 'react-native';
+import { uploadPhotoToTheServer } from '../redux/actions/photo';
 
 const CommentForm = ({ navigation }) => {
   const business = useSelector((state) => state.business);
@@ -26,51 +25,74 @@ const CommentForm = ({ navigation }) => {
   const userId = user ? user.id : null;
   const businessId = business.id;
   const { name } = business;
-  const [errorMessage, setErrorMessage] = useState('');
+  const error = useSelector((state) => state.error);
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
   const [stars, setStars] = useState(0);
   const [photo, setPhoto] = useState('');
-  const uploadedPhoto = useSelector((state) => state.photo);
   const [image, setImage] = useState(null);
+  const [titleError, setTitleError] = useState('');
+  const [commentError, setCommentError] = useState('');
+
+  const clearInputs = () => {
+    setTitle('');
+    setComment('');
+    setTitleError('');
+    setCommentError('');
+  };
 
   const handleSubmitClick = () => {
-    if (!userId) {
-      prompt();
-    } else if (image) {
-      const uri = image;
-      const uriParts = uri.split('.');
-      const fileType = uriParts[uriParts.length - 1];
+    if (!title.length) {
+      setTitleError('The title cannot be empty!');
+    }
 
-      const formData = new FormData();
-      formData.append('photo', {
-        uri,
-        name: `photo.${fileType}`,
-        type: `image/${fileType}`
-      });
+    if (!comment.length) {
+      setCommentError('The comment cannot be empty!');
+    }
 
-      dispatch(
-        uploadPhotoToTheServer(formData, businessId, {
-          businessId,
-          userId,
-          title,
-          comment,
-          stars
-        })
-      );
+    if (title.length && comment.length) {
+      if (!userId) {
+        prompt();
+      } else if (image) {
+        const uri = image;
+        const uriParts = uri.split('.');
+        const fileType = uriParts[uriParts.length - 1];
 
-      navigation.navigate('Business', { id: businessId });
-    } else {
-      dispatch(
-        createCommentFromServer(businessId, {
-          businessId,
-          userId,
-          title,
-          comment,
-          stars
-        })
-      );
-      navigation.navigate('Business', { id: businessId });
+        const formData = new FormData();
+        formData.append('photo', {
+          uri,
+          name: `photo.${fileType}`,
+          type: `image/${fileType}`
+        });
+
+        dispatch(
+          uploadPhotoToTheServer(formData, businessId, {
+            businessId,
+            userId,
+            title,
+            comment,
+            stars
+          })
+        );
+
+        navigation.navigate('Business', { id: businessId });
+
+        clearInputs();
+      } else {
+        dispatch(
+          createCommentFromServer(businessId, {
+            businessId,
+            userId,
+            title,
+            comment,
+            stars
+          })
+        );
+
+        navigation.navigate('Business', { id: businessId });
+
+        clearInputs();
+      }
     }
   };
 
@@ -108,7 +130,7 @@ const CommentForm = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <IconButton
-        style={{ alignSelf: 'flex-end' }}
+        style={styles.iconButton}
         icon="close"
         onPress={() => navigation.pop(1)}
         accessibilityLabel="close"
@@ -121,25 +143,17 @@ const CommentForm = ({ navigation }) => {
           imageSize={20}
           startingValue={0}
           readonly={false}
-          style={{
-            alignSelf: 'flex-start',
-            marginTop: '5%',
-            marginBottom: '5%'
-          }}
+          style={styles.rating}
           onFinishRating={(rating) => setStars(rating)}
         />
         <TextInput
           placeholder="Great!"
           autoCapitalize="sentences"
-          style={{
-            marginBottom: '5%',
-            height: 20,
-            borderColor: 'gray',
-            borderWidth: 1
-          }}
+          style={styles.titleInput}
           value={title}
           onChangeText={(text) => setTitle(text)}
         />
+        <Text style={styles.errorStyle}>{titleError}</Text>
         <TextInput
           placeholder="This is my favorite restaurant! The food is fantastic. :)"
           multiline
@@ -150,29 +164,22 @@ const CommentForm = ({ navigation }) => {
           onSubmitEditing={() => {
             Keyboard.dismiss();
           }}
-          style={{ height: 150, borderColor: 'gray', borderWidth: 1 }}
+          style={styles.commentInput}
         />
+        <Text style={styles.errorStyle}>{commentError}</Text>
         <IconButton
-          style={{ alignSelf: 'flex-start' }}
           icon="camera"
           onPress={getPermissionAsync}
           accessibilityLabel="choose an image"
         />
         {photo ? (
-          <View
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'flex-start',
-              margin: 10
-            }}
-          >
+          <View style={styles.photoContainer}>
             <IconButton
               size={15}
               icon="close"
               onPress={() => setPhoto('')}
               accessibilityLabel="close"
-              style={{ margin: 0, padding: 0 }}
+              style={styles.closeIconButton}
             />
             <Image
               key={photo}
@@ -183,6 +190,7 @@ const CommentForm = ({ navigation }) => {
             />
           </View>
         ) : null}
+        <Text style={styles.errorStyle}>{error}</Text>
         <TouchableOpacity style={styles.button} onPress={handleSubmitClick}>
           <Text style={styles.textStyle}>Submit</Text>
         </TouchableOpacity>
