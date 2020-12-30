@@ -143,7 +143,7 @@ const SingleBusiness = ({ route, navigation }) => {
       <MapView
         style={styles.mapStyle}
         provider={PROVIDER_GOOGLE}
-        showsUserLocation={true}
+        showsUserLocation={false}
         region={{
           latitude: Number(latitude),
           longitude: Number(longitude),
