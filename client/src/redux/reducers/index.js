@@ -7,13 +7,11 @@ import ownerReducer from './owner';
 import errorReducer from './error';
 import usersReducer from './users';
 
-export default {
-  businessesReducer,
-  businessReducer,
-  photoReducer,
-  commentsReducer,
-  userReducer,
-  ownerReducer,
-  errorReducer,
-  usersReducer
-};
+export { businessesReducer };
+export { businessReducer };
+export { photoReducer };
+export { commentsReducer };
+export { userReducer };
+export { ownerReducer };
+export { errorReducer };
+export { usersReducer };
